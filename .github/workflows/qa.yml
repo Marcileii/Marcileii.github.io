@@ -31,12 +31,10 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '22'
-          cache: npm
-          cache-dependency-path: qa/package-lock.json
 
       - name: Install QA dependencies
         working-directory: qa
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       - name: Install Chromium
         working-directory: qa
