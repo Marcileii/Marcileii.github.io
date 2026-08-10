@@ -63,7 +63,7 @@ test('CRM Pro: login, cadastro e pipeline carregam', async ({ page }) => {
   await expect(page.locator('#kanban .col')).toHaveCount(4);
 });
 
-test('AgendaPro: fluxo completo até confirmação', async ({ page }) => {
+test('AgendaPro: fluxo completo até confirmação e painel', async ({ page }) => {
   await page.goto('/demos/agendapro/');
   await page.locator('[data-service-start]').first().click();
   await page.locator('[data-professional]').first().click();
@@ -73,7 +73,7 @@ test('AgendaPro: fluxo completo até confirmação', async ({ page }) => {
   await page.locator('#bookEmail').fill('qa@example.com');
   await page.locator('#bookingForm button[type="submit"]').click();
   await expect(page.locator('.success-step')).toBeVisible();
-  await expect(page.locator('#confirmation')).toContainText('Cliente QA').not;
+  await expect(page.locator('#successCopy')).toContainText('Cliente QA');
   await page.locator('#viewAdmin').click();
   await expect(page.locator('#adminDialog')).toBeVisible();
   await expect(page.locator('#adminList')).toContainText('Cliente QA');
