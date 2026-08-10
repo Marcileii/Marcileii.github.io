@@ -10,3 +10,8 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+const conversionScript=document.createElement('script');
+conversionScript.src='/assets/conversion.js?v=1';
+conversionScript.defer=true;
+document.head.appendChild(conversionScript);
