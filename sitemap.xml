@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://marcileii.github.io/</loc><priority>1.0</priority></url>
+  <url><loc>https://marcileii.github.io/contratar/</loc><priority>0.9</priority></url>
+  <url><loc>https://marcileii.github.io/cases/serviceflow/</loc><priority>0.8</priority></url>
+  <url><loc>https://marcileii.github.io/cases/omnichannel-performance/</loc><priority>0.8</priority></url>
+  <url><loc>https://marcileii.github.io/cases/recommendation-engine/</loc><priority>0.8</priority></url>
+  <url><loc>https://marcileii.github.io/demos/crm-pro/</loc><priority>0.8</priority></url>
+  <url><loc>https://marcileii.github.io/demos/agendapro/</loc><priority>0.8</priority></url>
+  <url><loc>https://marcileii.github.io/demos/leadflow/</loc><priority>0.7</priority></url>
+  <url><loc>https://marcileii.github.io/demos/aurora-estetica/</loc><priority>0.6</priority></url>
+  <url><loc>https://marcileii.github.io/demos/nexo-contabil/</loc><priority>0.6</priority></url>
+  <url><loc>https://marcileii.github.io/demos/cafe-atelier/</loc><priority>0.6</priority></url>
+  <url><loc>https://marcileii.github.io/demos/vista-imoveis/</loc><priority>0.6</priority></url>
+  <url><loc>https://marcileii.github.io/demos/atlas/</loc><priority>0.5</priority></url>
+</urlset>
