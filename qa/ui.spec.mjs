@@ -23,7 +23,7 @@ for (const [mode, viewport] of viewports) {
   for (const [name, path] of pages) {
     test(`${mode}: ${name} sem overflow e controles utilizaveis`, async ({ page }) => {
       await page.setViewportSize(viewport);
-      const response = await page.goto(path, { waitUntil:'load' });
+      const response = await page.goto(path, { waitUntil:'domcontentloaded' });
       expect(response?.ok(), `${path} deve responder 2xx`).toBeTruthy();
       if (name === 'home') await expect(page.locator('#systems')).toBeVisible();
       const overflow = await page.evaluate(() => ({ sw:document.documentElement.scrollWidth, cw:document.documentElement.clientWidth }));
@@ -41,7 +41,7 @@ for (const [mode, viewport] of viewports) {
 }
 
 test('home expõe sistemas e caminho de contratação', async ({ page }) => {
-  await page.goto('/', { waitUntil:'load' });
+  await page.goto('/', { waitUntil:'domcontentloaded' });
   await expect(page.locator('#systems')).toBeVisible();
   await expect(page.locator('a[href="/demos/crm-pro/"]').first()).toBeVisible();
   await expect(page.locator('a[href="/demos/agendapro/"]').first()).toBeVisible();
@@ -49,7 +49,7 @@ test('home expõe sistemas e caminho de contratação', async ({ page }) => {
 });
 
 test('CRM Pro: login, cadastro e pipeline carregam', async ({ page }) => {
-  await page.goto('/demos/crm-pro/', { waitUntil:'load' });
+  await page.goto('/demos/crm-pro/', { waitUntil:'domcontentloaded' });
   await page.locator('#loginForm button').click();
   await expect(page.locator('#app')).toBeVisible();
   await page.locator('#clientBtn').click();
@@ -64,7 +64,7 @@ test('CRM Pro: login, cadastro e pipeline carregam', async ({ page }) => {
 });
 
 test('AgendaPro: fluxo completo até confirmação e painel', async ({ page }) => {
-  await page.goto('/demos/agendapro/', { waitUntil:'load' });
+  await page.goto('/demos/agendapro/', { waitUntil:'domcontentloaded' });
   await page.locator('[data-service-start]').first().click();
   await page.locator('[data-professional]').first().click();
   await page.locator('.slot:not([disabled])').first().click();
@@ -80,7 +80,7 @@ test('AgendaPro: fluxo completo até confirmação e painel', async ({ page }) =
 });
 
 test('LeadFlow: formulário produz resultado da automação', async ({ page }) => {
-  await page.goto('/demos/leadflow/', { waitUntil:'load' });
+  await page.goto('/demos/leadflow/', { waitUntil:'domcontentloaded' });
   await page.locator('#run').click();
   await expect(page.locator('#result')).toHaveClass(/show/, { timeout:10000 });
   await expect(page.locator('#payload')).toContainText('routing');
@@ -88,7 +88,7 @@ test('LeadFlow: formulário produz resultado da automação', async ({ page }) =
 });
 
 test('Contratar: briefing gera email revisável sem envio automático', async ({ page }) => {
-  await page.goto('/contratar/', { waitUntil:'load' });
+  await page.goto('/contratar/', { waitUntil:'domcontentloaded' });
   await page.locator('[name="name"]').fill('Cliente QA');
   await page.locator('[name="email"]').fill('qa@example.com');
   await page.locator('[name="type"]').selectOption({label:'Sistema Web'});
