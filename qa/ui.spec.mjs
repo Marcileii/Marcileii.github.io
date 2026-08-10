@@ -94,7 +94,7 @@ test('Contratar: briefing gera email revisável sem envio automático', async ({
   await page.locator('[name="type"]').selectOption({label:'Sistema Web'});
   await page.locator('[name="budget"]').selectOption({label:'R$ 3.000 – 5.000'});
   await page.locator('[name="deadline"]').selectOption({label:'Até 1 mês'});
-  await page.locator('[name="description"]').fill('Preciso de um sistema para organizar clientes, oportunidades, tarefas e acompanhar o funil comercial.');
+  await page.locator('#briefingForm textarea[name="description"]').fill('Preciso de um sistema para organizar clientes, oportunidades, tarefas e acompanhar o funil comercial.');
   await page.locator('#briefingForm button[type="submit"]').click();
   await expect(page.locator('#result')).toBeVisible();
   await expect(page.locator('#preview')).toContainText('Cliente QA');
