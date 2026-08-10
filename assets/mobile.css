@@ -5,6 +5,7 @@
   html{scroll-padding-top:72px}
   body{overflow-x:hidden}
   body.menu-open{overflow:hidden}
+  .reveal,.js .reveal{opacity:1!important;transform:none!important;transition:none!important}
   .top{z-index:100}
   .topin{display:flex!important;align-items:center;gap:10px;min-height:68px}
   .name{margin-right:auto;min-width:0}
