@@ -3,256 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Marcilei Brandão — desenvolvimento web, sistemas, CRM e automação.">
+  <meta name="description" content="Marcilei Brandão — desenvolvimento web, sistemas, CRM, automação e integrações.">
   <meta name="theme-color" content="#f3f0e8">
+  <meta property="og:title" content="Marcilei Brandão — Developer · CRM · Automation">
+  <meta property="og:description" content="Sistemas web, CRM, automações e integrações construídos do problema ao deploy.">
   <title>Marcilei Brandão — Developer · CRM · Automation</title>
-  <style>
-    :root{
-      --paper:#f3f0e8;
-      --paper-2:#e9e5dc;
-      --ink:#11110f;
-      --muted:#66635c;
-      --line:#cbc6bb;
-      --accent:#ff4f18;
-      --green:#c7ff4a;
-      --dark:#11110f;
-      --white:#fffdf7;
-      --max:1240px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    ::selection{background:var(--ink);color:var(--paper)}
-    .wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
-    .mono{font-family:"Courier New",Courier,monospace;text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:700}
-    .top{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(243,240,232,.92);backdrop-filter:blur(14px)}
-    .topin{min-height:68px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
-    .name{font-weight:900;text-decoration:none;font-size:18px;letter-spacing:-.03em}
-    .nav{display:flex;gap:24px}
-    .nav a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700}
-    .nav a:hover{color:var(--ink)}
-    .availability{justify-self:end;display:flex;align-items:center;gap:8px;color:var(--muted)}
-    .availability i{display:block;width:8px;height:8px;border-radius:50%;background:#29a34a}
-
-    .hero{padding:74px 0 46px;border-bottom:1px solid var(--line)}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.45fr);gap:54px;align-items:end}
-    .hero-kicker{display:flex;gap:18px;align-items:center;margin-bottom:28px;color:var(--muted)}
-    .hero-kicker:after{content:"";height:1px;width:78px;background:var(--ink)}
-    h1{margin:0;max-width:980px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(58px,8.6vw,118px);font-weight:400;line-height:.86;letter-spacing:-.065em}
-    h1 em{font-style:italic;color:var(--accent)}
-    .hero-bottom{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:54px;align-items:end}
-    .intro{margin:0;max-width:650px;font-size:20px;line-height:1.45;letter-spacing:-.02em}
-    .hero-links{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
-    .pill{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 15px;border:1px solid var(--ink);border-radius:999px;text-decoration:none;font-size:13px;font-weight:800;transition:.18s ease}
-    .pill:hover{background:var(--ink);color:var(--paper)}
-    .pill.dark{background:var(--ink);color:var(--paper)}
-    .pill.dark:hover{background:var(--accent);border-color:var(--accent)}
-    .portrait-wrap{position:relative;justify-self:end;width:min(100%,310px)}
-    .portrait{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(100%);border:1px solid var(--ink)}
-    .portrait-note{position:absolute;left:-30px;bottom:24px;max-width:210px;padding:13px 15px;background:var(--green);border:1px solid var(--ink);transform:rotate(-3deg);font-size:12px;line-height:1.35;font-weight:800;box-shadow:5px 5px 0 var(--ink)}
-
-    .ticker{overflow:hidden;border-bottom:1px solid var(--line);background:var(--dark);color:var(--paper)}
-    .ticker-in{display:flex;width:max-content;animation:run 22s linear infinite;padding:12px 0}
-    .ticker span{white-space:nowrap;margin-right:40px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
-    .ticker b{color:var(--green);margin:0 13px}
-    @keyframes run{to{transform:translateX(-50%)}}
-
-    .section{padding:92px 0;border-bottom:1px solid var(--line)}
-    .section-head{display:grid;grid-template-columns:180px 1fr;gap:30px;margin-bottom:54px}
-    .section-head h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,6vw,76px);font-weight:400;letter-spacing:-.055em;line-height:.95}
-    .section-head p{margin:14px 0 0;max-width:650px;color:var(--muted);font-size:16px;line-height:1.55}
-
-    .work{border-top:1px solid var(--ink)}
-    .case{display:grid;grid-template-columns:74px minmax(0,.9fr) minmax(360px,1.1fr);gap:28px;padding:34px 0;border-bottom:1px solid var(--line);align-items:start}
-    .case-num{padding-top:4px;color:var(--muted)}
-    .case-info h3{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,4.3vw,58px);font-weight:400;line-height:.95;letter-spacing:-.05em}
-    .case-info p{margin:17px 0 0;max-width:570px;color:var(--muted);font-size:15px;line-height:1.6}
-    .meta{display:grid;grid-template-columns:100px 1fr;gap:8px 14px;margin-top:25px;padding-top:17px;border-top:1px solid var(--line);font-size:12px}
-    .meta dt{color:var(--muted)}
-    .meta dd{margin:0;font-weight:700}
-    .case-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
-    .text-link{font-size:13px;font-weight:900;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
-    .text-link:hover{color:var(--accent);border-color:var(--accent)}
-    .case-visual{min-height:340px;border:1px solid var(--ink);background:#d9d4c9;overflow:hidden;position:relative}
-    .case-visual.dark{background:#141414;color:#f6f2e9}
-    .visual-label{position:absolute;z-index:3;left:14px;top:14px;padding:7px 9px;background:var(--paper);border:1px solid var(--ink);font-size:10px;font-family:"Courier New",monospace;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
-    .dark .visual-label{background:var(--green);color:var(--ink)}
-    .sf-ui{display:grid;grid-template-columns:82px 1fr;height:100%;min-height:340px;background:#f8f8f5}
-    .sf-side{padding:64px 13px 16px;background:#191919;color:#fff}
-    .sf-logo{font-weight:900;font-size:12px;margin-bottom:26px}.sf-line{height:7px;margin:12px 0;background:#454545;border-radius:3px}.sf-main{padding:60px 22px 20px}.sf-title{font:700 26px/1.05 Georgia,serif;margin-bottom:21px}.sf-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.sf-kpi{height:70px;border:1px solid #bdbdb7;padding:10px;background:white}.sf-kpi b{display:block;font-size:20px}.sf-kpi small{color:#777}.sf-table{margin-top:12px;border:1px solid #bdbdb7;background:white}.sf-row{display:grid;grid-template-columns:1fr .7fr .6fr;gap:8px;padding:10px;border-bottom:1px solid #ddd;font-size:10px}.sf-row:last-child{border-bottom:0}
-    .omni{padding:58px 22px 20px}.omni-top{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.omni-top strong{font:400 30px/1 Georgia,serif}.omni-top small{color:#aaa}.omni-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.omni-kpi{padding:12px;border:1px solid #444;background:#1d1d1d}.omni-kpi b{display:block;font-size:21px}.omni-kpi span{font-size:9px;color:#aaa;text-transform:uppercase}.bars{height:130px;margin-top:13px;display:flex;gap:9px;align-items:flex-end;padding:12px;border:1px solid #444;background:#1a1a1a}.bar{flex:1;background:var(--green);min-height:18px}.bar:nth-child(2){height:42%}.bar:nth-child(3){height:76%}.bar:nth-child(4){height:53%}.bar:nth-child(5){height:88%}.bar:nth-child(6){height:64%}.bar:nth-child(7){height:98%}.bar:nth-child(8){height:72%}
-    .flowboard{padding:62px 22px 22px;background:#fffdf7;height:100%;min-height:340px}.flow-title{font:400 30px/1 Georgia,serif;margin-bottom:28px}.flowline{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:center}.flowstep{padding:13px 8px;border:1px solid var(--ink);font-size:10px;font-weight:800;text-align:center;background:var(--paper)}.flowarrow{text-align:center;font-weight:900;color:var(--accent)}
-    .iframe-shell{position:absolute;inset:0;background:#fff;overflow:hidden}.iframe-shell iframe{width:1440px;height:900px;border:0;transform:scale(.46);transform-origin:top left;pointer-events:none}.atlas-frame iframe{width:1440px;height:1000px;transform:scale(.46)}
-    .demo-tag{position:absolute;z-index:4;right:14px;bottom:14px;background:var(--accent);color:white;border:1px solid var(--ink);padding:8px 10px;font:700 10px/1 "Courier New",monospace;text-transform:uppercase;letter-spacing:.08em}
-
-    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
-    .about-copy{font-family:Georgia,"Times New Roman",serif;font-size:clamp(32px,4.4vw,56px);line-height:1.08;letter-spacing:-.045em}
-    .about-copy p{margin:0}.about-copy em{color:var(--accent)}
-    .about-side{display:grid;gap:26px}
-    .fact{padding-top:12px;border-top:1px solid var(--ink)}
-    .fact strong{display:block;font:400 32px/1 Georgia,serif;margin-bottom:6px}.fact span{color:var(--muted);font-size:13px;line-height:1.45}
-
-    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
-    .service{min-height:220px;padding:23px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;flex-direction:column;justify-content:space-between}
-    .service .mono{color:var(--muted)}
-    .service h3{margin:40px 0 0;font:400 30px/1 Georgia,serif;letter-spacing:-.04em}
-    .service:hover{background:var(--green)}
-
-    .stack-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-    .stack-block{border-top:1px solid var(--ink);padding-top:17px}
-    .stack-block h3{margin:0 0 18px;font:400 30px/1 Georgia,serif}
-    .stack-list{display:flex;flex-wrap:wrap;gap:7px}
-    .stack-item{padding:8px 10px;border:1px solid var(--line);background:var(--white);font-size:12px;font-weight:700}
-
-    .contact{padding:90px 0;background:var(--dark);color:var(--paper)}
-    .contact-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}
-    .contact h2{margin:0;font:400 clamp(54px,8vw,104px)/.88 Georgia,serif;letter-spacing:-.065em}
-    .contact h2 em{color:var(--green);font-style:italic}
-    .contact-side p{margin:0 0 24px;color:#aaa59b;font-size:15px;line-height:1.55}
-    .contact .pill{border-color:var(--paper);color:var(--paper)}
-    .contact .pill:hover{background:var(--paper);color:var(--ink)}
-    footer{background:var(--dark);color:#8f8a80;border-top:1px solid #333;padding:24px 0 36px}
-    .foot{display:flex;justify-content:space-between;gap:20px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
-    .foot a{color:#c8c2b7;text-decoration:none}
-
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.in{opacity:1;transform:none}
-    @media(max-width:980px){
-      .topin{grid-template-columns:1fr auto}.nav{display:none}.hero-grid{grid-template-columns:1fr}.portrait-wrap{justify-self:start;width:260px;margin-top:20px}.hero-bottom{grid-template-columns:1fr}.hero-links{justify-content:flex-start}.section-head{grid-template-columns:1fr}.case{grid-template-columns:54px 1fr}.case-visual{grid-column:2}.about-grid,.contact-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr}.stack-wrap{grid-template-columns:1fr}.iframe-shell iframe{transform:scale(.42)}
-    }
-    @media(max-width:650px){
-      .wrap{width:min(var(--max),calc(100% - 24px))}.topin{min-height:60px}.availability span{display:none}.hero{padding-top:48px}.hero-grid{gap:24px}h1{font-size:59px}.hero-bottom{margin-top:38px}.intro{font-size:17px}.portrait-wrap{width:210px}.portrait-note{left:130px;bottom:18px;width:165px}.section{padding:64px 0}.section-head{margin-bottom:35px}.case{grid-template-columns:1fr;gap:18px;padding:28px 0}.case-num{grid-row:1}.case-info{grid-row:2}.case-visual{grid-column:1;grid-row:3;min-height:280px}.sf-ui,.flowboard{min-height:280px}.sf-main{padding:58px 13px 12px}.sf-kpis{grid-template-columns:1fr 1fr}.sf-kpi:last-child{display:none}.omni{padding:58px 13px 14px}.omni-kpis{grid-template-columns:1fr 1fr}.flowline{grid-template-columns:1fr}.flowarrow{transform:rotate(90deg)}.services-grid{grid-template-columns:1fr}.service{min-height:170px}.iframe-shell iframe{transform:scale(.32)}.atlas-frame iframe{transform:scale(.31)}.foot{flex-direction:column}}
-  </style>
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-  <header class="top">
-    <div class="wrap topin">
-      <a class="name" href="#top">Marcilei Brandão</a>
-      <nav class="nav"><a href="#work">Trabalhos</a><a href="#about">Sobre</a><a href="#services">O que faço</a><a href="#contact">Contato</a></nav>
-      <div class="availability mono"><i></i><span>Disponível para freelas</span></div>
-    </div>
-  </header>
+<header class="top"><div class="wrap topin"><a class="name" href="#top">Marcilei Brandão</a><nav class="nav"><a href="#work">Trabalhos</a><a href="#about">Sobre</a><a href="#capabilities">O que faço</a><a href="#process">Processo</a><a href="#contact">Contato</a></nav><div class="availability mono"><i></i><span>Disponível para freelas</span></div></div></header>
+<main id="top">
+<section class="hero"><div class="wrap"><div class="hero-grid"><div><div class="hero-kicker mono">Developer · CRM · Automation</div><h1>Construo sistemas que <em>fazem o trabalho acontecer.</em></h1><div class="hero-bottom"><p class="intro">Sou Marcilei. Trabalho entre desenvolvimento, CRM, dados e automação — transformando processos que dão trabalho em produtos, integrações e fluxos que funcionam de verdade.</p><div class="hero-links"><a class="pill dark" href="#work">Ver trabalhos ↓</a><a class="pill" href="mailto:marcileibrandao922@gmail.com?subject=Projeto%20freelance">Falar comigo</a></div></div></div><div class="portrait-wrap"><img class="portrait" src="https://avatars.githubusercontent.com/u/120384094?v=4" alt="Foto de Marcilei Brandão"><div class="portrait-note">4+ anos trabalhando com tecnologia, CRM e automação.</div></div></div></div></section>
+<div class="ticker" aria-hidden="true"><div class="ticker-in"><span>Web development <b>✦</b> CRM <b>✦</b> Automation <b>✦</b> APIs <b>✦</b> Data <b>✦</b> React <b>✦</b> SQL <b>✦</b> Salesforce Marketing Cloud <b>✦</b></span><span>Web development <b>✦</b> CRM <b>✦</b> Automation <b>✦</b> APIs <b>✦</b> Data <b>✦</b> React <b>✦</b> SQL <b>✦</b> Salesforce Marketing Cloud <b>✦</b></span></div></div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <div class="hero-grid">
-          <div>
-            <div class="hero-kicker mono">Developer · CRM · Automation</div>
-            <h1>Construo sistemas que <em>fazem o trabalho acontecer.</em></h1>
-            <div class="hero-bottom">
-              <p class="intro">Sou Marcilei. Trabalho entre desenvolvimento, CRM, dados e automação — transformando processos que hoje dão trabalho em produtos e fluxos que funcionam de verdade.</p>
-              <div class="hero-links"><a class="pill dark" href="#work">Ver trabalhos ↓</a><a class="pill" href="mailto:marcileibrandao922@gmail.com?subject=Projeto%20freelance">Falar comigo</a></div>
-            </div>
-          </div>
-          <div class="portrait-wrap">
-            <img class="portrait" src="https://avatars.githubusercontent.com/u/120384094?v=4" alt="Foto de Marcilei Brandão">
-            <div class="portrait-note">4+ anos trabalhando com tecnologia, CRM e automação.</div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="section" id="work"><div class="wrap"><div class="section-head reveal"><div class="mono">01 / Selected work</div><div><h2>Trabalhos selecionados</h2><p>Projetos públicos, demos funcionais e cases corporativos anonimizados. Cada trabalho mostra o problema, o raciocínio e a entrega — sem expor informação confidencial.</p></div></div><div class="work">
+<article class="case reveal"><div class="case-num mono">01</div><div class="case-info"><div class="mono">Produto próprio · em evolução</div><h3>ServiceFlow</h3><p>Produto web para empresas de serviços técnicos organizarem clientes, equipamentos, ordens de serviço, orçamentos e retornos. Nasceu como protótipo e vem sendo usado como laboratório real de produto, arquitetura e experiência.</p><dl class="meta"><dt class="mono">Papel</dt><dd>Produto, UI e desenvolvimento</dd><dt class="mono">Stack</dt><dd>React · Vite · GitHub</dd><dt class="mono">Foco</dt><dd>Operação · CRM · SaaS</dd></dl><div class="case-links"><a class="text-link" href="/cases/serviceflow/">Ler case →</a><a class="text-link" href="https://github.com/Marcileii/ServiceFlow" target="_blank" rel="noreferrer">Repositório ↗</a></div></div><div class="case-visual"><span class="visual-label">ServiceFlow / interface</span><div class="sf-ui"><aside class="sf-side"><div class="sf-logo">SERVICEFLOW</div><div class="sf-line"></div><div class="sf-line"></div><div class="sf-line"></div><div class="sf-line"></div></aside><div class="sf-main"><div class="sf-title">Visão da operação</div><div class="sf-kpis"><div class="sf-kpi"><small>OS abertas</small><b>18</b></div><div class="sf-kpi"><small>Clientes</small><b>124</b></div><div class="sf-kpi"><small>Retornos</small><b>07</b></div></div><div class="sf-table"><div class="sf-row"><b>Cliente</b><b>Status</b><b>Data</b></div><div class="sf-row"><span>Comercial Norte</span><span>Em andamento</span><span>10/08</span></div><div class="sf-row"><span>Studio Ar</span><span>Agendada</span><span>11/08</span></div><div class="sf-row"><span>Clima Tech</span><span>Orçamento</span><span>12/08</span></div></div></div></div></div></article>
+<article class="case reveal"><div class="case-num mono">02</div><div class="case-info"><div class="mono">Case corporativo · anonimizado</div><h3>Omnichannel Performance Hub</h3><p>Painel para consolidar e acompanhar performance de jornadas de Email, SMS, Push e WhatsApp em uma única experiência, com filtros, visão por canal e exportação para análise operacional.</p><dl class="meta"><dt class="mono">Papel</dt><dd>Arquitetura, lógica e interface</dd><dt class="mono">Stack</dt><dd>SFMC · SSJS · JavaScript · SQL</dd><dt class="mono">Foco</dt><dd>Observabilidade · CRM · Dados</dd></dl><div class="case-links"><a class="text-link" href="/cases/omnichannel-performance/">Ler case →</a></div></div><div class="case-visual dark"><span class="visual-label">Case anonimizado</span><div class="omni"><div class="omni-top"><strong>Performance multicanal</strong><small>Visão consolidada</small></div><div class="omni-kpis"><div class="omni-kpi"><span>Email</span><b>—</b></div><div class="omni-kpi"><span>SMS</span><b>—</b></div><div class="omni-kpi"><span>Push</span><b>—</b></div><div class="omni-kpi"><span>WhatsApp</span><b>—</b></div></div><div class="bars"><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i></div></div></div></article>
+<article class="case reveal"><div class="case-num mono">03</div><div class="case-info"><div class="mono">Case corporativo · anonimizado</div><h3>Dynamic Recommendation Engine</h3><p>Motor de personalização para comunicações de CRM que decide contexto, categoria, identificadores e tracking antes de montar recomendações dinâmicas. A lógica trabalha com fallbacks para não depender de um único campo perfeito.</p><dl class="meta"><dt class="mono">Papel</dt><dd>Lógica, personalização e HTML</dd><dt class="mono">Stack</dt><dd>AMPscript · SQL · HTML · Personalization</dd><dt class="mono">Foco</dt><dd>Relevância · Cross-sell · Tracking</dd></dl><div class="case-links"><a class="text-link" href="/cases/recommendation-engine/">Ler case →</a></div></div><div class="case-visual"><span class="visual-label">Lógica de recomendação</span><div class="flowboard"><div class="flow-title">Contexto → decisão → conteúdo</div><div class="flowline"><div class="flowstep">Entrada</div><div class="flowarrow">→</div><div class="flowstep">Fallbacks</div><div class="flowarrow">→</div><div class="flowstep">Recomendação</div><div class="flowarrow">→</div><div class="flowstep">Tracking</div></div></div></div></article>
+<article class="case reveal"><div class="case-num mono">04</div><div class="case-info"><div class="mono">Demo funcional</div><h3>LeadFlow Automation</h3><p>Demonstração de um fluxo de captação e qualificação: o lead entra, passa por regras de score, recebe classificação e segue para CRM/follow-up. Serve como prova visual de automação orientada a processo.</p><dl class="meta"><dt class="mono">Tipo</dt><dd>Demo interativa</dd><dt class="mono">Foco</dt><dd>Lead · Score · Automação</dd></dl><div class="case-links"><a class="text-link" href="/demos/leadflow/" target="_blank">Abrir demo ↗</a></div></div><div class="case-visual"><span class="visual-label">Demo ao vivo</span><div class="iframe-shell"><iframe src="/demos/leadflow/" title="Preview LeadFlow"></iframe></div><span class="demo-tag">Interativa</span></div></article>
+<article class="case reveal"><div class="case-num mono">05</div><div class="case-info"><div class="mono">Demo de web design</div><h3>Atlas Studio</h3><p>Landing page criada para demonstrar direção visual, responsividade, hierarquia de conteúdo e construção de uma página comercial que não depende de template pronto.</p><dl class="meta"><dt class="mono">Tipo</dt><dd>Website demonstrativo</dd><dt class="mono">Foco</dt><dd>Design · Front-end · Conversão</dd></dl><div class="case-links"><a class="text-link" href="/demos/atlas/" target="_blank">Abrir site ↗</a></div></div><div class="case-visual"><span class="visual-label">Website / preview</span><div class="iframe-shell"><iframe src="/demos/atlas/" title="Preview Atlas Studio"></iframe></div><span class="demo-tag">Responsivo</span></div></article>
+</div></div></section>
 
-    <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>Web development <b>✦</b> CRM <b>✦</b> Automation <b>✦</b> APIs <b>✦</b> Data <b>✦</b> React <b>✦</b> Supabase <b>✦</b> Salesforce Marketing Cloud <b>✦</b></span><span>Web development <b>✦</b> CRM <b>✦</b> Automation <b>✦</b> APIs <b>✦</b> Data <b>✦</b> React <b>✦</b> Supabase <b>✦</b> Salesforce Marketing Cloud <b>✦</b></span></div></div>
+<section class="section" id="about"><div class="wrap"><div class="section-head reveal"><div class="mono">02 / About</div><div><h2>Mais produto. Menos enfeite.</h2></div></div><div class="about-grid reveal"><div class="about-copy"><p>Minha base vem de CRM e Martech. Isso me ensinou a pensar em <em>dados, regra, jornada e resultado</em> antes de pensar em framework. Hoje levo essa visão para sistemas web, automações e integrações.</p></div><div class="about-side"><div class="fact"><strong>4+ anos</strong><span>atuando em tecnologia aplicada a CRM, dados, campanhas e automação.</span></div><div class="fact"><strong>CRM + código</strong><span>consigo conversar sobre negócio e descer até SQL, API, JavaScript ou lógica de personalização.</span></div><div class="fact"><strong>Ponta a ponta</strong><span>briefing, arquitetura, implementação, teste, documentação e publicação.</span></div></div></div></div></section>
 
-    <section class="section" id="work">
-      <div class="wrap">
-        <div class="section-head reveal"><div class="mono">01 / Selected work</div><div><h2>Trabalhos selecionados</h2><p>Projetos públicos, demos funcionais e cases corporativos anonimizados. A ideia aqui não é mostrar ferramenta: é mostrar o problema, a solução e como eu penso a entrega.</p></div></div>
+<section class="section alt" id="capabilities"><div class="wrap"><div class="section-head reveal"><div class="mono">03 / Capabilities</div><div><h2>Problemas que eu consigo tirar do papel</h2><p>Em vez de vender uma tecnologia específica, prefiro começar pelo fluxo que precisa existir e escolher a stack depois.</p></div></div><div class="cap-grid reveal"><div class="cap"><span class="mono">01 / Web</span><div><h3>Sites & landing pages</h3><p>Sites institucionais, páginas de campanha, formulários, responsividade, tracking e publicação.</p></div></div><div class="cap"><span class="mono">02 / Systems</span><div><h3>Sistemas web & dashboards</h3><p>Painéis internos, CRUD, autenticação, gestão de clientes, operações, relatórios e interfaces de uso diário.</p></div></div><div class="cap"><span class="mono">03 / CRM</span><div><h3>CRM & automações</h3><p>Jornadas, segmentação, regras, personalização, monitoramento e fluxos multicanal.</p></div></div><div class="cap"><span class="mono">04 / Integrations</span><div><h3>APIs & integrações</h3><p>Consumo e exposição de APIs, webhooks, transformação de dados e conexão entre ferramentas.</p></div></div></div></div></section>
 
-        <div class="work">
-          <article class="case reveal">
-            <div class="case-num mono">01</div>
-            <div class="case-info">
-              <div class="mono">Produto próprio · em evolução</div>
-              <h3>ServiceFlow</h3>
-              <p>Produto web para empresas de serviços técnicos organizarem clientes, equipamentos, ordens de serviço, orçamentos e retornos. O projeto também serve como laboratório de arquitetura, produto e experiência.</p>
-              <dl class="meta"><dt class="mono">Papel</dt><dd>Produto, UI e desenvolvimento</dd><dt class="mono">Stack</dt><dd>React · Vite · Supabase</dd><dt class="mono">Foco</dt><dd>Operação · CRM · SaaS</dd></dl>
-              <div class="case-links"><a class="text-link" href="https://github.com/Marcileii/ServiceFlow" target="_blank" rel="noreferrer">Ver repositório ↗</a></div>
-            </div>
-            <div class="case-visual"><span class="visual-label">ServiceFlow / interface</span><div class="sf-ui"><aside class="sf-side"><div class="sf-logo">SERVICEFLOW</div><div class="sf-line"></div><div class="sf-line"></div><div class="sf-line"></div><div class="sf-line"></div></aside><div class="sf-main"><div class="sf-title">Visão da operação</div><div class="sf-kpis"><div class="sf-kpi"><small>OS abertas</small><b>18</b></div><div class="sf-kpi"><small>Clientes</small><b>124</b></div><div class="sf-kpi"><small>Retornos</small><b>07</b></div></div><div class="sf-table"><div class="sf-row"><b>Cliente</b><b>Status</b><b>Data</b></div><div class="sf-row"><span>Comercial Norte</span><span>Em andamento</span><span>10/08</span></div><div class="sf-row"><span>Studio Ar</span><span>Agendada</span><span>11/08</span></div><div class="sf-row"><span>Clima Tech</span><span>Orçamento</span><span>12/08</span></div></div></div></div></div>
-          </article>
+<section class="section dark-section" id="process"><div class="wrap"><div class="section-head reveal"><div class="mono">04 / Process</div><div><h2>Como eu conduzo um projeto</h2><p>O objetivo é reduzir surpresa. Antes de codar muito, eu deixo claro o que entra, como funciona e como vamos validar.</p></div></div><div class="process-grid reveal"><div class="process-step"><span class="mono">01</span><strong>Entender</strong><p>Problema, usuário, fluxo atual, restrições e o que define sucesso.</p></div><div class="process-step"><span class="mono">02</span><strong>Desenhar</strong><p>Escopo, telas, dados, integrações e arquitetura mínima necessária.</p></div><div class="process-step"><span class="mono">03</span><strong>Construir</strong><p>Implementação por partes pequenas, versionadas e fáceis de testar.</p></div><div class="process-step"><span class="mono">04</span><strong>Validar</strong><p>Fluxo por fluxo, responsividade, erros, estados vazios e comportamento real.</p></div><div class="process-step"><span class="mono">05</span><strong>Entregar</strong><p>Deploy, documentação, handoff e próximos passos sem deixar caixa-preta.</p></div></div></div></section>
 
-          <article class="case reveal">
-            <div class="case-num mono">02</div>
-            <div class="case-info">
-              <div class="mono">Case corporativo · anonimizado</div>
-              <h3>Dashboard multicanal</h3>
-              <p>Centralização de performance de jornadas de CRM em um único painel para reduzir consulta manual e acelerar análise operacional entre diferentes canais.</p>
-              <dl class="meta"><dt class="mono">Canais</dt><dd>Email · SMS · Push · WhatsApp</dd><dt class="mono">Solução</dt><dd>Filtros, KPIs, histórico e exportação</dd><dt class="mono">Tech</dt><dd>JavaScript · SQL · SFMC</dd></dl>
-              <div class="case-links"><span class="text-link">Código privado / NDA</span></div>
-            </div>
-            <div class="case-visual dark"><span class="visual-label">Case / CRM Analytics</span><div class="omni"><div class="omni-top"><strong>Performance multicanal</strong><small>últimos 7 dias</small></div><div class="omni-kpis"><div class="omni-kpi"><span>Email</span><b>128k</b></div><div class="omni-kpi"><span>Push</span><b>74k</b></div><div class="omni-kpi"><span>SMS</span><b>21k</b></div><div class="omni-kpi"><span>Total</span><b>223k</b></div></div><div class="bars"><div class="bar" style="height:30%"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div></div>
-          </article>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="mono">05 / Experience</div><div><h2>Experiência que molda meu jeito de construir</h2><p>Minha evolução profissional acontece na interseção entre CRM, desenvolvimento e arquitetura de soluções.</p></div></div><div class="timeline reveal"><div class="timeline-row"><span class="mono">Hoje</span><h3>CRM sênior + desenvolvimento</h3><p>Atuação em automações, dados, personalização, integrações e construção de ferramentas para operação.</p></div><div class="timeline-row"><span class="mono">Martech</span><h3>Salesforce Marketing Cloud</h3><p>Experiência prática com SQL, AMPscript, SSJS, Automation Studio, Journey Builder, CloudPages, email, SMS, Push e WhatsApp.</p></div><div class="timeline-row"><span class="mono">Próximo nível</span><h3>Web, produto e IA aplicada</h3><p>Expansão da stack para aplicações web completas, APIs, bancos, agentes e automações inteligentes.</p></div></div></div></section>
 
-          <article class="case reveal">
-            <div class="case-num mono">03</div>
-            <div class="case-info">
-              <div class="mono">Case corporativo · anonimizado</div>
-              <h3>Personalização dinâmica</h3>
-              <p>Arquitetura para transformar comportamento e contexto do cliente em conteúdo e recomendações diferentes por pessoa, mantendo regras de fallback, tracking e governança.</p>
-              <dl class="meta"><dt class="mono">Entrada</dt><dd>Comportamento · categoria · pesquisa</dd><dt class="mono">Motor</dt><dd>Regras · fallback · recomendação</dd><dt class="mono">Saída</dt><dd>Email personalizado + tracking</dd></dl>
-            </div>
-            <div class="case-visual"><span class="visual-label">Architecture / personalization</span><div class="flowboard"><div class="flow-title">Do sinal ao conteúdo</div><div class="flowline"><div class="flowstep">COMPORTAMENTO</div><div class="flowarrow">→</div><div class="flowstep">REGRAS</div><div class="flowarrow">→</div><div class="flowstep">CONTEÚDO</div></div><div style="margin-top:18px;border-top:1px solid #111;padding-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="flowstep">Fallback seguro</div><div class="flowstep">UTM + tracking</div><div class="flowstep">Prioridade</div><div class="flowstep">Escala</div></div></div></div>
-          </article>
+<section class="section alt"><div class="wrap"><div class="section-head reveal"><div class="mono">06 / Toolkit</div><div><h2>Ferramentas entram quando fazem sentido</h2></div></div><div class="stack-wrap reveal"><div class="stack-block"><h3>Web & produto</h3><div class="stack-list"><span class="stack-item">HTML / CSS</span><span class="stack-item">JavaScript</span><span class="stack-item">React</span><span class="stack-item">Vite</span><span class="stack-item">Git / GitHub</span><span class="stack-item">Supabase</span><span class="stack-item">PostgreSQL</span><span class="stack-item">REST APIs</span><span class="stack-item">Webhooks</span></div></div><div class="stack-block"><h3>CRM & dados</h3><div class="stack-list"><span class="stack-item">Salesforce Marketing Cloud</span><span class="stack-item">SQL</span><span class="stack-item">AMPscript</span><span class="stack-item">SSJS</span><span class="stack-item">Automation Studio</span><span class="stack-item">Journey Builder</span><span class="stack-item">CloudPages</span><span class="stack-item">Personalization</span></div></div></div></div></section>
 
-          <article class="case reveal">
-            <div class="case-num mono">04</div>
-            <div class="case-info">
-              <div class="mono">Demo funcional · portfólio</div>
-              <h3>LeadFlow</h3>
-              <p>Uma demonstração de automação comercial: captura de lead, qualificação, score, CRM e follow-up. Criada para mostrar visualmente como uma automação de negócio pode ser apresentada e operada.</p>
-              <dl class="meta"><dt class="mono">Tipo</dt><dd>Automação + CRM</dd><dt class="mono">Status</dt><dd>Demo interativa</dd><dt class="mono">Objetivo</dt><dd>Captação e qualificação</dd></dl>
-              <div class="case-links"><a class="text-link" href="/demos/leadflow/" target="_blank">Abrir demo ↗</a></div>
-            </div>
-            <div class="case-visual"><span class="visual-label">Live preview</span><div class="iframe-shell"><iframe src="/demos/leadflow/" title="Preview LeadFlow" loading="lazy"></iframe></div><span class="demo-tag">Demo real</span></div>
-          </article>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="mono">07 / FAQ</div><div><h2>Antes de começar</h2><p>Algumas respostas rápidas para quem chegou aqui pensando em contratar.</p></div></div><div class="faq reveal"><details><summary>Você pega projeto que já tem código?</summary><p>Sim. Primeiro eu faço uma leitura do repositório e separo o que é correção, configuração, dívida técnica e funcionalidade nova. O escopo final só deve ser fechado depois dessa inspeção.</p></details><details><summary>Você consegue publicar o projeto?</summary><p>Sim. Dependendo da stack, posso cuidar de GitHub, variáveis de ambiente, banco, build, domínio e deploy. Quando alguma permissão precisa ser feita pelo dono da conta, eu deixo o passo exato documentado.</p></details><details><summary>Você trabalha com projeto pequeno?</summary><p>Sim. Landing pages, dashboards, automações pontuais e pequenas ferramentas são ótimos projetos quando o problema está bem definido.</p></details><details><summary>E os cases corporativos sem nome?</summary><p>São apresentados de forma anonimizada para preservar confidencialidade. Mostro o tipo de problema, arquitetura e decisões, mas não publico dados, credenciais, nomes internos ou código proprietário.</p></details></div></div></section>
 
-          <article class="case reveal">
-            <div class="case-num mono">05</div>
-            <div class="case-info">
-              <div class="mono">Demo funcional · website</div>
-              <h3>Atlas Studio</h3>
-              <p>Landing page comercial criada como prova de execução visual: hierarquia, responsividade, conteúdo, CTA e acabamento — sem depender de template pronto.</p>
-              <dl class="meta"><dt class="mono">Tipo</dt><dd>Landing page</dd><dt class="mono">Status</dt><dd>Publicada</dd><dt class="mono">Foco</dt><dd>Design · conversão · mobile</dd></dl>
-              <div class="case-links"><a class="text-link" href="/demos/atlas/" target="_blank">Abrir site ↗</a></div>
-            </div>
-            <div class="case-visual"><span class="visual-label">Live preview</span><div class="iframe-shell atlas-frame"><iframe src="/demos/atlas/" title="Preview Atlas Studio" loading="lazy"></iframe></div><span class="demo-tag">Demo real</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="wrap">
-        <div class="section-head reveal"><div class="mono">02 / About</div><div><h2>Mais produto. Menos enfeite.</h2></div></div>
-        <div class="about-grid reveal"><div class="about-copy"><p>Gosto de pegar um processo confuso e chegar em algo que a pessoa consegue <em>usar, medir e evoluir.</em> Minha base vem de CRM e Martech; o desenvolvimento web amplia o que consigo entregar ponta a ponta.</p></div><div class="about-side"><div class="fact"><strong>CRM + código</strong><span>Automação, segmentação, dados e experiência na mesma conversa.</span></div><div class="fact"><strong>Problema → entrega</strong><span>Entendo o fluxo antes de escolher framework ou ferramenta.</span></div><div class="fact"><strong>Documentado</strong><span>Projeto precisa continuar entendível depois da entrega.</span></div></div></div>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="wrap">
-        <div class="section-head reveal"><div class="mono">03 / What I do</div><div><h2>O que eu consigo construir</h2><p>Do site comercial ao sistema interno. O escopo muda, mas o foco é sempre entregar algo utilizável e apresentável.</p></div></div>
-        <div class="services-grid reveal"><div class="service"><span class="mono">01</span><h3>Sites & landing pages</h3></div><div class="service"><span class="mono">02</span><h3>Sistemas web & dashboards</h3></div><div class="service"><span class="mono">03</span><h3>CRM & automações</h3></div><div class="service"><span class="mono">04</span><h3>APIs & integrações</h3></div></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head reveal"><div class="mono">04 / Toolkit</div><div><h2>Ferramentas que entram quando fazem sentido</h2></div></div>
-        <div class="stack-wrap reveal"><div class="stack-block"><h3>Web & produto</h3><div class="stack-list"><span class="stack-item">HTML / CSS</span><span class="stack-item">JavaScript</span><span class="stack-item">React</span><span class="stack-item">Vite</span><span class="stack-item">Git / GitHub</span><span class="stack-item">Supabase</span><span class="stack-item">PostgreSQL</span><span class="stack-item">REST APIs</span></div></div><div class="stack-block"><h3>CRM & dados</h3><div class="stack-list"><span class="stack-item">Salesforce Marketing Cloud</span><span class="stack-item">SQL</span><span class="stack-item">AMPscript</span><span class="stack-item">SSJS</span><span class="stack-item">Automation Studio</span><span class="stack-item">Journey Builder</span><span class="stack-item">CloudPages</span><span class="stack-item">Personalization</span></div></div></div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="wrap contact-grid reveal"><h2>Tem um problema para <em>tirar do manual?</em></h2><div class="contact-side"><p>Me manda o contexto. Eu te ajudo a transformar a ideia em escopo, arquitetura e entrega — seja um site, um sistema ou uma automação.</p><a class="pill" href="mailto:marcileibrandao922@gmail.com?subject=Quero%20falar%20sobre%20um%20projeto">marcileibrandao922@gmail.com ↗</a></div></div>
-    </section>
-  </main>
-
-  <footer><div class="wrap foot"><span>Marcilei Brandão · 2026</span><span><a href="https://github.com/Marcileii" target="_blank" rel="noreferrer">GitHub ↗</a></span></div></footer>
-
-  <script>
-    const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}})},{threshold:.08});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-  </script>
+<section class="contact" id="contact"><div class="wrap contact-grid reveal"><h2>Tem um problema para <em>tirar do manual?</em></h2><div class="contact-side"><p>Me manda o contexto. Posso ajudar a transformar a ideia em escopo, arquitetura e entrega — seja um site, sistema, dashboard, integração ou automação.</p><div class="hero-links" style="justify-content:flex-start"><a class="pill" href="mailto:marcileibrandao922@gmail.com?subject=Quero%20falar%20sobre%20um%20projeto">Email ↗</a><a class="pill" href="https://www.linkedin.com/in/marcilei-brand%C3%A3o-a8650b22a/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div></div></section>
+</main>
+<footer><div class="wrap foot"><span>Marcilei Brandão · 2026</span><div class="foot-links"><a href="https://github.com/Marcileii" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/marcilei-brand%C3%A3o-a8650b22a/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div></footer>
+<script src="/assets/site.js"></script>
 </body>
 </html>
