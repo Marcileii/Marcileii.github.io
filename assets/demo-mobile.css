@@ -1,0 +1,175 @@
+/* Shared mobile UX overrides for standalone portfolio demos. */
+@media(max-width:850px){
+  body.demo-site,body.demo-leadflow{overflow-x:hidden;-webkit-text-size-adjust:100%}
+  body.demo-site .wrap,body.demo-leadflow .wrap{width:calc(100% - 24px)!important}
+  body.demo-site button,body.demo-site input,body.demo-site select,body.demo-leadflow button,body.demo-leadflow input,body.demo-leadflow select{touch-action:manipulation}
+
+  /* Commercial demo headers */
+  body.demo-site:not(.demo-atlas) .top{position:sticky;top:0;z-index:40;min-height:62px!important;padding:8px 0;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+  body.demo-aurora .top{background:rgba(247,241,236,.94)}
+  body.demo-nexo .top{background:rgba(238,232,222,.94)}
+  body.demo-cafe .top{background:rgba(246,240,231,.94)}
+  body.demo-vista .top{background:rgba(243,241,235,.94)}
+  body.demo-site:not(.demo-atlas) .top-right{gap:8px!important}
+  body.demo-site:not(.demo-atlas) .top .nav{display:none!important}
+  body.demo-site:not(.demo-atlas) .portfolio-link{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 11px;border:1px solid currentColor;border-radius:999px;font-size:10px!important}
+  body.demo-site:not(.demo-atlas) .logo,body.demo-site:not(.demo-atlas) .brand{font-size:21px!important;line-height:1}
+  body.demo-site:not(.demo-atlas) .logo small,body.demo-site:not(.demo-atlas) .brand small{font-size:7px!important;letter-spacing:.13em!important;max-width:150px;white-space:normal;line-height:1.25}
+
+  /* Shared landing-page rhythm */
+  body.demo-site .hero{padding:34px 0 54px!important;gap:28px!important}
+  body.demo-site .hero h1{font-size:clamp(44px,13vw,58px)!important;line-height:.94!important;letter-spacing:-.05em!important}
+  body.demo-site .hero p{font-size:15px!important;line-height:1.6!important}
+  body.demo-site .hero .actions,body.demo-site .hero .hero-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;margin-top:22px!important}
+  body.demo-site .hero .btn{width:100%;min-height:48px!important;padding:0 15px!important}
+  body.demo-site .section{padding:58px 0!important}
+  body.demo-site .head{gap:10px!important;margin-bottom:28px!important}
+  body.demo-site .head h2{font-size:clamp(39px,11.5vw,50px)!important;line-height:.98!important}
+  body.demo-site .kicker,body.demo-site .eyebrow{font-size:9px!important;line-height:1.35}
+  body.demo-site .footer{padding:22px 0 calc(22px + env(safe-area-inset-bottom))!important;line-height:1.5}
+  body.demo-site input,body.demo-site select{min-height:46px!important;font-size:16px!important}
+  body.demo-site button{min-height:44px}
+  body.demo-site .submit,body.demo-site .calc{min-height:48px!important}
+  body.demo-site .row{grid-template-columns:1fr!important}
+
+  /* Aurora */
+  body.demo-aurora .hero-photo{min-height:390px!important;height:auto!important;border-radius:120px 120px 20px 20px!important}
+  body.demo-aurora .hero-badge{left:10px!important;right:10px;bottom:12px!important;max-width:none!important;padding:14px 15px!important}
+  body.demo-aurora .hero-badge strong{font-size:23px!important}
+  body.demo-aurora .trust-item{padding:17px 4px!important}
+  body.demo-aurora .treat-img{height:200px!important}
+  body.demo-aurora .treat-body{padding:18px!important}
+  body.demo-aurora .treat-body h3{font-size:27px!important}
+  body.demo-aurora .method-grid{gap:28px!important}
+  body.demo-aurora .booking{padding:58px 0!important}
+  body.demo-aurora .booking-grid{gap:26px!important}
+  body.demo-aurora .booking h2{font-size:42px!important}
+  body.demo-aurora .book-card{padding:16px!important;border-radius:15px!important}
+  body.demo-aurora .pane h3{font-size:26px!important}
+  body.demo-aurora .choice-grid{grid-template-columns:1fr!important}
+  body.demo-aurora .choice{min-height:58px!important;padding:12px!important}
+  body.demo-aurora .date-row,body.demo-aurora .times{grid-template-columns:repeat(2,1fr)!important}
+  body.demo-aurora .date,body.demo-aurora .time{min-height:44px!important}
+  body.demo-aurora .book-card .actions{display:flex!important;flex-wrap:wrap!important;justify-content:stretch!important;gap:8px!important}
+  body.demo-aurora .book-card .actions>*{flex:1 1 135px;min-height:46px!important}
+  body.demo-aurora .summary div{align-items:flex-start;flex-direction:column;gap:3px!important}
+
+  /* Nexo */
+  body.demo-nexo .dashboard{min-height:390px!important;padding:18px!important;border-radius:16px!important}
+  body.demo-nexo .dash-top{align-items:flex-start!important;gap:6px;flex-direction:column}
+  body.demo-nexo .dash-top h3{font-size:29px!important}
+  body.demo-nexo .metrics{grid-template-columns:1fr 1fr!important;gap:7px!important}
+  body.demo-nexo .metric{padding:12px!important}
+  body.demo-nexo .metric b{font-size:20px!important}
+  body.demo-nexo .graph{height:125px!important;padding:11px!important;gap:6px!important}
+  body.demo-nexo .signal{padding:17px 0!important}
+  body.demo-nexo .service{min-height:auto!important;padding:19px!important}
+  body.demo-nexo .service h3{margin:34px 0 9px!important;font-size:28px!important}
+  body.demo-nexo .diag-grid{gap:28px!important}
+  body.demo-nexo .diag-copy h2,body.demo-nexo .contact-grid h2{font-size:42px!important}
+  body.demo-nexo .wizard{padding:16px!important;border-radius:13px!important}
+  body.demo-nexo .options{grid-template-columns:1fr!important}
+  body.demo-nexo .opt{min-height:60px!important}
+  body.demo-nexo .wizard-actions{display:grid!important;grid-template-columns:1fr!important}
+  body.demo-nexo .wizard-actions>*{width:100%;min-height:46px!important;display:flex;align-items:center;justify-content:center}
+  body.demo-nexo .contact-section{padding:58px 0!important}
+  body.demo-nexo .contact-grid{gap:24px!important}
+  body.demo-nexo .form{padding:16px!important}
+
+  /* Cafe */
+  body.demo-cafe .hero-photo{height:370px!important;border-radius:18px!important}
+  body.demo-cafe .strip-item{padding:17px 0!important}
+  body.demo-cafe .filters{margin:0 -12px 20px!important;padding:0 12px 4px!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
+  body.demo-cafe .filters::-webkit-scrollbar{display:none}
+  body.demo-cafe .filter{flex:0 0 auto;min-height:44px!important;scroll-snap-align:start}
+  body.demo-cafe .menu-grid{gap:9px!important}
+  body.demo-cafe .item{min-height:190px!important;padding:18px!important}
+  body.demo-cafe .item h3{margin:28px 0 8px!important;font-size:28px!important}
+  body.demo-cafe .story-grid{gap:24px!important}
+  body.demo-cafe .event{padding:58px 0!important}
+  body.demo-cafe .event-grid{gap:24px!important}
+  body.demo-cafe .event h2{font-size:42px!important}
+  body.demo-cafe .quote{padding:16px!important}
+
+  /* Vista */
+  body.demo-vista .hero-visual{height:360px!important;grid-template-columns:1.2fr .8fr!important;gap:6px!important}
+  body.demo-vista .photo{border-radius:12px!important}
+  body.demo-vista .filterbar{grid-template-columns:1fr!important;padding:11px!important;gap:7px!important}
+  body.demo-vista .filterbar select,body.demo-vista .filterbar button{min-height:46px!important;font-size:16px}
+  body.demo-vista .properties{gap:10px!important}
+  body.demo-vista .prop-img{height:205px!important}
+  body.demo-vista .prop-body{padding:17px!important}
+  body.demo-vista .prop-body h3{font-size:26px!important}
+  body.demo-vista .prop-meta{align-items:flex-start;flex-direction:column!important;gap:9px!important}
+  body.demo-vista .prop-meta a{display:flex;align-items:center;justify-content:center;width:100%;min-height:42px;border:1px solid var(--forest);border-radius:8px;text-decoration:none;font-weight:800}
+  body.demo-vista .sim-grid,body.demo-vista .visit-grid{gap:24px!important}
+  body.demo-vista .sim h2,body.demo-vista .visit h2{font-size:42px!important}
+  body.demo-vista .card,body.demo-vista .form{padding:16px!important}
+  body.demo-vista .visit{padding:58px 0!important}
+
+  /* Atlas is structurally different */
+  body.demo-atlas .wrap{width:calc(100% - 24px)!important}
+  body.demo-atlas .nav{position:sticky;top:0;z-index:40;height:62px!important;background:rgba(245,239,230,.94);backdrop-filter:blur(14px)}
+  body.demo-atlas .nav>div{gap:8px!important}
+  body.demo-atlas .nav>div>a:not(.pill){display:none!important}
+  body.demo-atlas .nav .pill{display:inline-flex!important;align-items:center;min-height:40px;padding:0 11px!important;font-size:10px!important}
+  body.demo-atlas .logo{font-size:20px!important}
+  body.demo-atlas .hero{padding:38px 0 52px!important;gap:28px!important}
+  body.demo-atlas h1{font-size:clamp(46px,13vw,58px)!important}
+  body.demo-atlas .hero p{font-size:15px!important}
+  body.demo-atlas .actions{display:grid!important;grid-template-columns:1fr!important}
+  body.demo-atlas .btn{width:100%;min-height:48px!important}
+  body.demo-atlas .visual{min-height:350px!important}
+  body.demo-atlas .photo{right:8px!important;border-radius:110px 110px 18px 18px!important}
+  body.demo-atlas .card{right:0!important;bottom:14px!important;width:205px!important;padding:15px!important}
+  body.demo-atlas .card b{font-size:25px!important}
+  body.demo-atlas .logos{gap:8px!important;padding:18px 0!important;font-size:12px}
+  body.demo-atlas .section{padding:58px 0!important}
+  body.demo-atlas .head{gap:12px!important;margin-bottom:25px!important}
+  body.demo-atlas .head h2{font-size:42px!important}
+  body.demo-atlas .head p{font-size:14px}
+  body.demo-atlas .service{padding:19px!important;border-radius:15px!important}
+  body.demo-atlas .work{min-height:330px!important;border-radius:17px!important}
+  body.demo-atlas .caption{left:17px!important;right:17px!important;bottom:16px!important}
+  body.demo-atlas .caption h3{font-size:28px!important}
+  body.demo-atlas .cta{padding:50px 0 60px!important}
+  body.demo-atlas .ctaBox{padding:22px!important;border-radius:18px!important;gap:14px!important}
+  body.demo-atlas .ctaBox h2{font-size:38px!important}
+
+  /* LeadFlow */
+  body.demo-leadflow .top{position:sticky;top:0;z-index:40;height:60px!important;background:rgba(7,16,23,.95);backdrop-filter:blur(14px)}
+  body.demo-leadflow .back{display:inline-flex;align-items:center;min-height:38px;padding:0 9px;border:1px solid var(--line);border-radius:999px;font-size:10px!important}
+  body.demo-leadflow .hero{padding:38px 0 22px!important;gap:18px!important}
+  body.demo-leadflow h1{font-size:clamp(43px,12vw,54px)!important;line-height:.94!important}
+  body.demo-leadflow .hero p{font-size:15px!important}
+  body.demo-leadflow .hero-card{padding:16px!important;border-radius:14px!important}
+  body.demo-leadflow .notice{line-height:1.55}
+  body.demo-leadflow .demo{gap:10px!important}
+  body.demo-leadflow .card{padding:16px!important;border-radius:14px!important}
+  body.demo-leadflow .row{grid-template-columns:1fr!important}
+  body.demo-leadflow .field input,body.demo-leadflow .field select{height:46px!important;font-size:16px}
+  body.demo-leadflow .btn{min-height:46px!important;height:auto!important}
+  body.demo-leadflow .preset{display:grid;grid-template-columns:1fr 1fr;gap:7px!important}
+  body.demo-leadflow .flow-title{align-items:flex-start!important;flex-direction:column!important;gap:5px!important}
+  body.demo-leadflow .step{min-height:125px!important;padding:12px!important}
+  body.demo-leadflow .step strong{margin:24px 0 6px!important}
+  body.demo-leadflow .explain{padding:13px!important;margin-top:12px!important}
+  body.demo-leadflow .result{padding-bottom:50px!important}
+  body.demo-leadflow .result-grid{gap:10px!important}
+  body.demo-leadflow .result-head{align-items:flex-start;flex-wrap:wrap}
+  body.demo-leadflow .crm{padding:13px!important}
+  body.demo-leadflow .crm-grid{grid-template-columns:1fr 1fr!important}
+  body.demo-leadflow pre{font-size:9px!important;min-height:160px!important;overflow-wrap:anywhere}
+}
+
+@media(min-width:380px) and (max-width:600px){
+  body.demo-leadflow .flow{grid-template-columns:1fr 1fr!important}
+}
+
+@media(max-width:379px){
+  body.demo-site:not(.demo-atlas) .logo,body.demo-site:not(.demo-atlas) .brand{font-size:18px!important}
+  body.demo-site:not(.demo-atlas) .portfolio-link{padding:0 9px;font-size:9px!important}
+  body.demo-site .hero h1{font-size:42px!important}
+  body.demo-nexo .metrics{grid-template-columns:1fr!important}
+  body.demo-leadflow .preset,body.demo-leadflow .flow,body.demo-leadflow .crm-grid{grid-template-columns:1fr!important}
+}
