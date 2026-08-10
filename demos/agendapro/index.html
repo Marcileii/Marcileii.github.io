@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AgendaPro — demo funcional de agendamento com serviços, profissionais, horários e painel administrativo.">
+  <meta name="theme-color" content="#f1efe9">
+  <title>AgendaPro — Demo de agendamento</title>
+  <link rel="stylesheet" href="base.css"><link rel="stylesheet" href="booking.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top"><span class="mark">A</span><span>AgendaPro</span></a>
+    <nav><a href="#servicos">Serviços</a><a href="#como">Como funciona</a><button class="nav-btn" id="adminAccess">Painel demo</button></nav>
+  </header>
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy"><span class="eyebrow">Agendamento online · projeto demonstrativo</span><h1>Marque seu horário sem trocar <em>dez mensagens.</em></h1><p>Escolha o serviço, profissional e horário disponível. A confirmação aparece na hora e o painel administrativo acompanha tudo em uma agenda central.</p><div class="hero-actions"><button class="btn primary" id="startBooking">Agendar agora →</button><button class="btn secondary" id="viewAdmin">Ver painel administrativo</button></div><div class="trust"><span>✓ confirmação imediata</span><span>✓ horários organizados</span><span>✓ experiência mobile</span></div></div>
+      <div class="hero-visual"><div class="phone"><div class="phone-top"><span>Hoje, 10 de agosto</span><b>Agenda</b></div><div class="appt"><span class="time">09:00</span><div><strong>Design de sobrancelhas</strong><small>Marina · 45 min</small></div></div><div class="appt featured"><span class="time">10:30</span><div><strong>Limpeza de pele</strong><small>Camila · 60 min</small></div></div><div class="appt"><span class="time">13:00</span><div><strong>Consulta inicial</strong><small>Paula · 30 min</small></div></div><div class="availability">Próximo horário livre <strong>14:30</strong></div></div></div>
+    </section>
+
+    <section class="services" id="servicos"><div class="wrap"><div class="section-head"><span class="eyebrow">01 / Serviços</span><h2>Escolha o que você precisa.</h2><p>Preços e duração claros antes de começar o agendamento.</p></div><div class="service-grid" id="serviceGrid"></div></div></section>
+
+    <section class="how" id="como"><div class="wrap"><div class="section-head"><span class="eyebrow">02 / Fluxo</span><h2>Quatro passos. Sem ligação.</h2></div><div class="steps"><article><b>01</b><h3>Serviço</h3><p>Escolha o atendimento e veja duração e valor.</p></article><article><b>02</b><h3>Profissional</h3><p>Selecione quem vai atender ou deixe o sistema escolher.</p></article><article><b>03</b><h3>Horário</h3><p>Veja apenas horários disponíveis para aquele contexto.</p></article><article><b>04</b><h3>Confirmação</h3><p>Cadastre seus dados e receba a confirmação na hora.</p></article></div></div></section>
+
+    <section class="booking-section" id="agendar"><div class="wrap booking-layout"><div class="booking-copy"><span class="eyebrow">03 / Agendamento</span><h2>Vamos encontrar um bom horário.</h2><p>Esta demo salva o agendamento apenas neste navegador. Ela reproduz a experiência que poderia ser ligada a um backend e notificações reais.</p><div class="summary-card" id="bookingSummary"><span>Seu agendamento</span><strong>Nenhuma seleção ainda</strong><small>Comece escolhendo um serviço.</small></div></div>
+      <div class="booking-card">
+        <div class="booking-progress"><i class="active"></i><i></i><i></i><i></i></div>
+        <div class="booking-step active" data-step="0"><span class="step-label">Passo 1 de 4</span><h3>Qual serviço?</h3><div class="choice-list" id="bookingServices"></div></div>
+        <div class="booking-step" data-step="1"><span class="step-label">Passo 2 de 4</span><h3>Com quem?</h3><div class="choice-list" id="bookingProfessionals"></div><div class="step-actions"><button class="btn secondary back-step">← Voltar</button></div></div>
+        <div class="booking-step" data-step="2"><span class="step-label">Passo 3 de 4</span><h3>Quando?</h3><div class="date-strip" id="dateStrip"></div><div class="slots" id="slotGrid"></div><div class="step-actions"><button class="btn secondary back-step">← Voltar</button></div></div>
+        <form class="booking-step" data-step="3" id="bookingForm"><span class="step-label">Passo 4 de 4</span><h3>Confirme seus dados.</h3><label>Nome<input id="bookName" required placeholder="Seu nome"></label><div class="two"><label>WhatsApp<input id="bookPhone" required placeholder="(11) 99999-9999"></label><label>Email<input id="bookEmail" type="email" required placeholder="voce@email.com"></label></div><div class="step-actions"><button class="btn secondary back-step" type="button">← Voltar</button><button class="btn primary" type="submit">Confirmar agendamento →</button></div></form>
+        <div class="booking-step success-step" data-step="4"><div class="success-icon">✓</div><span class="step-label">Agendamento confirmado</span><h3>Está na agenda.</h3><p id="successCopy"></p><div class="confirmation" id="confirmation"></div><button class="btn primary" id="newBooking">Fazer outro agendamento</button></div>
+      </div>
+    </div></section>
+  </main>
+
+  <dialog id="adminDialog" class="admin-modal">
+    <div class="admin-shell">
+      <aside class="admin-side"><div class="brand inverse"><span class="mark">A</span><span>AgendaPro</span></div><nav><button class="active">Agenda do dia</button><button>Clientes</button><button>Serviços</button></nav><div class="admin-note">Ambiente demo<br><small>dados deste navegador</small></div></aside>
+      <section class="admin-main"><header><div><span class="eyebrow">Painel administrativo</span><h2>Agenda do dia</h2></div><button class="close" id="closeAdmin" aria-label="Fechar painel">×</button></header><div class="admin-metrics" id="adminMetrics"></div><div class="admin-grid"><section class="admin-panel"><div class="panel-title"><h3>Agendamentos</h3><button class="text-btn" id="resetAgenda">Restaurar demo</button></div><div class="admin-list" id="adminList"></div></section><section class="admin-panel"><div class="panel-title"><h3>Disponibilidade</h3><span>Hoje</span></div><div class="availability-grid" id="availabilityGrid"></div></section></div></section>
+    </div>
+  </dialog>
+  <div class="toast" id="toast" aria-live="polite"></div>
+  <footer><div class="wrap"><span>AgendaPro · projeto demonstrativo</span><a href="../../">← Voltar ao portfólio</a></div></footer>
+  <script src="app.js"></script>
+</body>
+</html>
