@@ -19,6 +19,18 @@ const viewports = [
   ['mobile',{width:390,height:844}]
 ];
 
+async function revealPage(page){
+  await page.evaluate(async()=>{
+    const max=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+    for(let y=0;y<max;y+=Math.max(320,window.innerHeight*.7)){
+      window.scrollTo(0,y);
+      await new Promise(r=>setTimeout(r,45));
+    }
+    window.scrollTo(0,0);
+  });
+  await page.waitForTimeout(120);
+}
+
 for (const [mode, viewport] of viewports) {
   for (const [name, path] of pages) {
     test(`${mode}: ${name} sem overflow e controles utilizaveis`, async ({ page }) => {
@@ -35,6 +47,7 @@ for (const [mode, viewport] of viewports) {
         return (el.tagName==='BUTTON' && r.height<28) || (['INPUT','SELECT'].includes(el.tagName) && r.height<34);
       }).map(el => ({tag:el.tagName,id:el.id,height:Math.round(el.getBoundingClientRect().height),text:(el.textContent||el.getAttribute('placeholder')||'').trim().slice(0,40)})));
       expect(tinyControls, `${path} possui controles pequenos demais: ${JSON.stringify(tinyControls)}`).toEqual([]);
+      await revealPage(page);
       await page.screenshot({path:`screenshots/${name}-${mode}.png`,fullPage:true});
     });
   }
@@ -48,10 +61,15 @@ test('home expõe sistemas e caminho de contratação', async ({ page }) => {
   await expect(page.locator('a[href="/contratar/"]').first()).toBeVisible();
 });
 
-test('CRM Pro: login, cadastro e pipeline carregam', async ({ page }) => {
+test('CRM Pro: login, estados, cadastro, pipeline e navegação mobile', async ({ page }) => {
+  await page.setViewportSize({width:390,height:844});
   await page.goto('/demos/crm-pro/', { waitUntil:'domcontentloaded' });
+  await expect(page.locator('#login')).toBeVisible();
+  await expect(page.locator('#app')).toBeHidden();
   await page.locator('#loginForm button').click();
+  await expect(page.locator('#login')).toBeHidden();
   await expect(page.locator('#app')).toBeVisible();
+  await expect(page.locator('.app > aside .nav')).toBeVisible();
   await page.locator('#clientBtn').click();
   await page.locator('#cname').fill('Cliente QA');
   await page.locator('#company').fill('Empresa QA');
