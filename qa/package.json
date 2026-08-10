@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-qa",
+  "private": true,
+  "version": "1.0.0",
+  "devDependencies": {
+    "@playwright/test": "1.59.1"
+  },
+  "scripts": {
+    "test:ui": "playwright test"
+  }
+}

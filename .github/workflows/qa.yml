@@ -1,0 +1,65 @@
+name: Portfolio QA
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches:
+      - develop
+      - 'feature/**'
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Static QA
+        run: python qa/static_qa.py
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install QA dependencies
+        working-directory: qa
+        run: npm install --no-audit --no-fund
+
+      - name: Install Chromium
+        working-directory: qa
+        run: npx playwright install --with-deps chromium
+
+      - name: Start portfolio server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/portfolio-server.log 2>&1 &
+          echo $! > /tmp/portfolio-server.pid
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/ >/dev/null && exit 0; sleep 1; done
+          cat /tmp/portfolio-server.log
+          exit 1
+
+      - name: UI and functional QA
+        working-directory: qa
+        run: npm run test:ui
+
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: portfolio-qa-${{ github.sha }}
+          path: |
+            qa/screenshots
+            qa/playwright-report
+            qa/test-results
+          if-no-files-found: ignore
+          retention-days: 14
