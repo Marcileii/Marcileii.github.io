@@ -1,0 +1,12 @@
+{
+  "name": "Marcilei Brandão — Portfólio",
+  "short_name": "Marcilei",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f0e8",
+  "theme_color": "#11110f",
+  "description": "Desenvolvimento Web, Sistemas, CRM, Automação, Dados e Integrações.",
+  "icons": [
+    {"src":"/favicon.svg?v=3","sizes":"any","type":"image/svg+xml","purpose":"any"}
+  ]
+}

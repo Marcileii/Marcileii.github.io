@@ -1,0 +1,10 @@
+.app[hidden],.login[hidden]{display:none!important}
+@media(max-width:850px){
+  .app{grid-template-columns:1fr;padding-bottom:64px}
+  .app>aside{display:block;position:fixed;left:0;right:0;bottom:0;top:auto;height:64px;padding:7px 8px;background:#121514;z-index:30;border-top:1px solid #2b302d}
+  .app>aside>.brand,.app>aside>.sidebottom{display:none}
+  .app>aside>.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:0}
+  .app>aside>.nav button{height:49px;padding:0 4px;text-align:center;font-size:8px;line-height:1.15;border-radius:8px;white-space:normal}
+  .app>aside>.nav button.active{background:#263029;color:#fff}
+  .toast{bottom:76px}
+}
