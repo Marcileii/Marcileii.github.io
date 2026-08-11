@@ -36,6 +36,7 @@ DANGEROUS_CODE = [
     ("eval()", re.compile(r"\beval\s*\(")),
     ("new Function()", re.compile(r"\bnew\s+Function\s*\(")),
     ("document.write()", re.compile(r"\bdocument\.write\s*\(")),
+    ("persistent localStorage", re.compile(r"\blocalStorage\b")),
     ("source map reference", re.compile(r"sourceMappingURL\s*=")),
 ]
 
