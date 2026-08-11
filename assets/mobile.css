@@ -25,11 +25,11 @@
   .mobile-nav-backdrop{display:block;position:fixed;inset:68px 0 0;z-index:98;border:0;padding:0;background:rgba(15,15,13,.34);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease;cursor:default}
   .mobile-nav-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
 
-  .top .nav{counter-reset:mobile-nav;display:grid!important;position:fixed;left:16px;right:16px;top:80px;bottom:auto;z-index:101;grid-template-columns:1fr 1fr;gap:0 24px;max-height:calc(100dvh - 96px);padding:8px 18px 18px;overflow:auto;background:var(--paper);border:1px solid var(--ink);box-shadow:7px 7px 0 var(--ink);transform:translateY(-10px) scale(.985);transform-origin:top center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
-  .top .nav.open{transform:none;opacity:1;visibility:visible;pointer-events:auto}
+  .top .nav{counter-reset:mobile-nav;display:grid!important;position:fixed;left:16px;right:16px;top:80px;bottom:auto;z-index:101;grid-template-columns:1fr 1fr;gap:0 24px;max-height:calc(100dvh - 96px);padding:8px 18px 18px;overflow:auto;background:var(--paper);border:1px solid var(--ink);box-shadow:7px 7px 0 var(--ink);transform:translateY(-10px) scale(.985);transform-origin:top center;opacity:1;visibility:hidden;pointer-events:none;transition:transform .18s ease,visibility 0s linear .18s}
+  .top .nav.open{transform:none;visibility:visible;pointer-events:auto;transition:transform .18s ease,visibility 0s}
   .top .nav a{counter-increment:mobile-nav;position:relative;display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;min-height:60px;padding:0;border:0!important;border-bottom:1px solid rgba(17,17,15,.26)!important;border-radius:0!important;color:var(--ink)!important;text-decoration:none;font:400 22px/1 Georgia,"Times New Roman",serif}
   .top .nav a:before{content:"0" counter(mobile-nav);color:#716f68;font:700 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em}
-  .top .nav a:after{content:"↗";font:700 13px/1 Arial,sans-serif;color:var(--orange)}
+  .top .nav a:after{content:"↗";font:700 13px/1 Arial,sans-serif;color:var(--accent)}
   .top .nav a[href^="#"]:after,.top .nav a[href*="/#"]:after{content:"↓"}
   .top .nav a:hover,.top .nav a:focus-visible{background:rgba(17,17,15,.04);outline:none}
   .top .nav .hire-nav{grid-column:1/-1;margin-top:12px;min-height:50px;padding:0 14px!important;border:1px solid var(--ink)!important;background:var(--ink);color:var(--paper)!important;font:800 11px/1 Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}
