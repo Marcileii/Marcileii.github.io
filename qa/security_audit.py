@@ -130,8 +130,7 @@ def audit_built_site(site: Path, errors: list[str], warnings: list[str]):
     for name in FORBIDDEN_PUBLISHED:
         if (site / name).exists():
             errors.append(f"published artifact contains private development path: {name}")
-    maps = list(site.rglob("*.map"))
-    for path in maps:
+    for path in site.rglob("*.map"):
         errors.append(f"published source map is forbidden: {path.relative_to(site)}")
     html_files = list(site.rglob("*.html"))
     if not html_files:
@@ -140,11 +139,15 @@ def audit_built_site(site: Path, errors: list[str], warnings: list[str]):
     for path in html_files:
         text = read(path)
         rel = path.relative_to(site)
-        csp = re.search(r"<meta\s+http-equiv=['\"]Content-Security-Policy['\"]\s+content=['\"]([^'\"]*)", text, re.I)
+        csp = re.search(
+            r"<meta\s+http-equiv=(['\"])Content-Security-Policy\1\s+content=(['\"])(.*?)\2",
+            text,
+            re.I | re.S,
+        )
         if not csp:
             errors.append(f"{rel}: missing Content-Security-Policy meta")
         else:
-            policy = csp.group(1)
+            policy = csp.group(3)
             for directive in CSP_REQUIRED:
                 if directive not in policy:
                     errors.append(f"{rel}: CSP missing directive: {directive}")
