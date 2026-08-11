@@ -22,13 +22,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Security source audit
+        run: python qa/security_audit.py
+
+      - name: Build secure public artifact
+        run: python scripts/build_secure_site.py
+
+      - name: Security deploy audit
+        run: python qa/security_audit.py --site-root dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+
+      - name: Upload public artifact only
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

@@ -27,6 +27,15 @@ jobs:
       - name: Static QA
         run: python qa/static_qa.py
 
+      - name: Security source audit
+        run: python qa/security_audit.py
+
+      - name: Build secure public artifact
+        run: python scripts/build_secure_site.py
+
+      - name: Security deploy audit
+        run: python qa/security_audit.py --site-root dist
+
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
@@ -40,8 +49,9 @@ jobs:
         working-directory: qa
         run: npx playwright install --with-deps chromium
 
-      - name: Start portfolio server
+      - name: Start secure portfolio server
         run: |
+          cd dist
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/portfolio-server.log 2>&1 &
           echo $! > /tmp/portfolio-server.pid
           for i in {1..20}; do curl -fsS http://127.0.0.1:4173/ >/dev/null && exit 0; sleep 1; done

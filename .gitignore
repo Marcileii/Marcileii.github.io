@@ -1,0 +1,31 @@
+# Local / CI output
+/dist/
+/qa/node_modules/
+/qa/playwright-report/
+/qa/test-results/
+/qa/screenshots/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.keystore
+*.secret
+secrets.*
+credentials.*
+
+# Source maps are never published
+*.map
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
