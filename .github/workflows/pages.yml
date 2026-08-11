@@ -39,7 +39,7 @@ jobs:
         run: python qa/security_audit.py --site-root dist
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload public artifact only
         uses: actions/upload-pages-artifact@v3
