@@ -62,19 +62,49 @@ for (const [device, viewport] of devices) {
   }
 }
 
-test('home: menu mobile abre, fecha e não some com a navegação', async ({ page }) => {
+for (const width of [360,390,430]) {
+  test(`home: menu editorial fica íntegro em ${width}px`, async ({ page }) => {
+    await page.setViewportSize({width,height:844});
+    await page.goto('/', { waitUntil:'domcontentloaded' });
+    const toggle=page.locator('.mobile-menu-toggle');
+    const nav=page.locator('.top .nav');
+    await expect(toggle).toBeVisible();
+    await expect(toggle).toContainText('Menu');
+    const toggleBox=await toggle.boundingBox();
+    expect(toggleBox?.height||0).toBeGreaterThanOrEqual(38);
+    expect(toggleBox?.width||999).toBeLessThanOrEqual(100);
+    await expect(toggle.locator('.menu-icon i')).toHaveCount(2);
+    const iconLines=await toggle.locator('.menu-icon i').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return {width:r.width,height:r.height}}));
+    expect(iconLines.every(line=>line.width>=16&&line.height<=3)).toBeTruthy();
+
+    await toggle.click();
+    await expect(nav).toHaveClass(/open/);
+    await expect(toggle).toContainText('Fechar');
+    await expect(page.locator('.mobile-nav-backdrop')).toHaveClass(/open/);
+    await expect(page.locator('.top .nav a[href="#work"]')).toBeVisible();
+    await expect(page.locator('.top .nav a[href="/contratar/"]')).toBeVisible();
+    const navBox=await nav.boundingBox();
+    expect(navBox?.x||0).toBeGreaterThanOrEqual(8);
+    expect((navBox?.x||0)+(navBox?.width||0)).toBeLessThanOrEqual(width-8);
+    await assertNoOverflow(page,`menu aberto ${width}`);
+    if(width===390) await page.screenshot({path:'screenshots/mobile/menu-open-390.png',fullPage:false});
+
+    await page.locator('.mobile-nav-backdrop').click({position:{x:2,y:2}});
+    await expect(nav).not.toHaveClass(/open/);
+    await expect(toggle).toContainText('Menu');
+  });
+}
+
+test('home: menu mobile fecha com ESC e devolve foco ao botão', async ({ page }) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto('/', { waitUntil:'domcontentloaded' });
-  const toggle = page.locator('.mobile-menu-toggle');
-  await expect(toggle).toBeVisible();
-  const nav = page.locator('.top .nav');
-  await expect(nav).not.toHaveClass(/open/);
+  const toggle=page.locator('.mobile-menu-toggle');
+  const nav=page.locator('.top .nav');
   await toggle.click();
   await expect(nav).toHaveClass(/open/);
-  await expect(page.locator('.top .nav a[href="#work"]')).toBeVisible();
-  await expect(page.locator('.top .nav a[href="/contratar/"]')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(nav).not.toHaveClass(/open/);
+  await expect(toggle).toBeFocused();
 });
 
 test('cases: menu mobile também permanece utilizável', async ({ page }) => {
