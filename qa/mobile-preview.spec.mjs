@@ -29,15 +29,31 @@ for (const width of [360,390,430]) {
 
     const previewBox = await sitePreview.boundingBox();
     const bodyBox = await siteBody.boundingBox();
-    expect(previewBox?.height || 0).toBeGreaterThanOrEqual(width <= 380 ? 455 : 475);
+    expect(previewBox?.height || 0).toBeGreaterThanOrEqual(width <= 380 ? 280 : 300);
     expect((bodyBox?.y || 0) + 1).toBeGreaterThanOrEqual((previewBox?.y || 0) + (previewBox?.height || 0));
 
-    const overlay = sitePreview.locator('.preview-open');
-    await expect(overlay).toBeHidden();
+    const action = sitePreview.locator('.preview-open');
+    await expect(action).toBeVisible();
 
     const iframe = sitePreview.locator('iframe');
     const iframeBox = await iframe.boundingBox();
-    expect(Math.abs((iframeBox?.height || 0) - (previewBox?.height || 0))).toBeLessThanOrEqual(2);
+    const actionBox = await action.boundingBox();
+    expect(iframeBox?.height || 0).toBeGreaterThanOrEqual(width <= 380 ? 230 : 255);
+    expect(actionBox?.height || 0).toBeGreaterThanOrEqual(46);
+    expect((actionBox?.y || 0) + 1).toBeGreaterThanOrEqual((iframeBox?.y || 0) + (iframeBox?.height || 0));
+    expect((previewBox?.height || 0) + 2).toBeGreaterThanOrEqual((iframeBox?.height || 0) + (actionBox?.height || 0));
+
+    const description = siteBody.locator('p').first();
+    await expect(description).toBeVisible();
+    const descriptionState = await description.evaluate((el) => ({
+      clientHeight: el.clientHeight,
+      scrollHeight: el.scrollHeight,
+      overflow: getComputedStyle(el).overflow,
+      maxHeight: getComputedStyle(el).maxHeight,
+    }));
+    expect(descriptionState.scrollHeight).toBeLessThanOrEqual(descriptionState.clientHeight + 1);
+    expect(descriptionState.overflow).not.toBe('hidden');
+    expect(descriptionState.maxHeight).toBe('none');
 
     const systemPreview = page.locator('.system-preview').first();
     await expect(systemPreview).toBeVisible();
