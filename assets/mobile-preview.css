@@ -1,0 +1,58 @@
+/* Mobile portfolio preview fixes.
+   The portfolio card is responsible for the CTA; the embedded site preview
+   must remain a clean visual sample with no button covering its content. */
+
+@media (max-width: 720px) {
+  .site-demo-preview,
+  .site-demo.featured .site-demo-preview {
+    height: clamp(460px, 128vw, 520px) !important;
+  }
+
+  .site-demo-preview iframe,
+  .site-demo.featured .site-demo-preview iframe {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+
+  /* The card already has a full-width "Abrir projeto completo" action below. */
+  .preview-open {
+    display: none !important;
+  }
+
+  .site-demo-body,
+  .site-demo.featured .site-demo-body {
+    position: relative;
+    z-index: 1;
+    overflow: visible !important;
+  }
+
+  /* Same rule for CRM/Agenda system previews. */
+  .system-preview {
+    height: clamp(400px, 110vw, 470px) !important;
+  }
+
+  .system-preview iframe {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+
+  .system-preview::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-demo-preview,
+  .site-demo.featured .site-demo-preview {
+    height: 460px !important;
+  }
+
+  .system-preview {
+    height: 400px !important;
+  }
+}
