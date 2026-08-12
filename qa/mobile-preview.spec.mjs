@@ -3,6 +3,19 @@ import fs from 'node:fs';
 
 fs.mkdirSync('screenshots/mobile', { recursive: true });
 
+async function warmLazyPreviews(page) {
+  const frames = page.locator('.site-demo-preview iframe, .system-preview iframe');
+  const count = await frames.count();
+  for (let i = 0; i < count; i += 1) {
+    const frame = frames.nth(i);
+    await frame.scrollIntoViewIfNeeded();
+    await expect.poll(
+      () => frame.evaluate((el) => el.contentDocument?.body?.innerText?.trim().length || 0),
+      { timeout: 5000 }
+    ).toBeGreaterThan(20);
+  }
+}
+
 for (const width of [360,390,430]) {
   test(`home: previews mobile não cortam texto nem recebem CTA sobreposto em ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
@@ -34,6 +47,8 @@ for (const width of [360,390,430]) {
     expect(systemAfter).toBe('none');
 
     if (width === 390) {
+      await warmLazyPreviews(page);
+      await page.locator('#sites-lps').scrollIntoViewIfNeeded();
       await page.locator('#sites-lps').screenshot({ path: 'screenshots/mobile/sites-lps-preview-fix-390.png' });
     }
   });
