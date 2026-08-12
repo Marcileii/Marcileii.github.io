@@ -14,7 +14,7 @@ create table if not exists portfolio.leads (
   budget text not null check (char_length(budget) <= 80),
   deadline text not null check (char_length(deadline) <= 80),
   description text not null check (char_length(description) between 30 and 5000),
-  references text check (references is null or char_length(references) <= 2500),
+  reference_links text check (reference_links is null or char_length(reference_links) <= 2500),
   source text not null default 'portfolio',
   status text not null default 'new' check (status in ('new','contacted','qualified','won','lost','spam')),
   email_status text not null default 'pending' check (email_status in ('pending','sent','failed')),
@@ -28,6 +28,9 @@ create table if not exists portfolio.rate_limits (
 
 create index if not exists portfolio_rate_limits_lookup_idx
   on portfolio.rate_limits (fingerprint, created_at desc);
+
+alter table portfolio.leads enable row level security;
+alter table portfolio.rate_limits enable row level security;
 
 revoke all on all tables in schema portfolio from public, anon, authenticated;
 grant select, insert, update, delete on portfolio.leads to service_role;
