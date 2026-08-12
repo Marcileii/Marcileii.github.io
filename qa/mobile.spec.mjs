@@ -134,6 +134,45 @@ test('home: previews usam viewport mobile real, não desktop reduzido', async ({
   }
 });
 
+for (const width of [360,390,430]) {
+  test(`home: cards de Sites & LPs não cortam descrição nem sobrepõem CTA em ${width}px`, async ({ page }) => {
+    await page.setViewportSize({width,height:900});
+    await page.goto('/', { waitUntil:'domcontentloaded' });
+    const cards=page.locator('#sites-lps .site-demo');
+    expect(await cards.count()).toBeGreaterThanOrEqual(5);
+
+    for(let i=0;i<await cards.count();i++){
+      const card=cards.nth(i);
+      const iframe=card.locator('.site-demo-preview iframe');
+      const action=card.locator('.preview-open');
+      const description=card.locator('.site-demo-body p');
+      await expect(iframe).toBeVisible();
+      await expect(action).toBeVisible();
+      await expect(description).toBeVisible();
+
+      const iframeBox=await iframe.boundingBox();
+      const actionBox=await action.boundingBox();
+      const descriptionBox=await description.boundingBox();
+      expect((actionBox?.y||0), `card ${i}: CTA não pode cobrir o iframe`).toBeGreaterThanOrEqual((iframeBox?.y||0)+(iframeBox?.height||0)-1);
+      expect((descriptionBox?.height||0), `card ${i}: descrição precisa ter altura visível`).toBeGreaterThan(35);
+
+      const clipping=await description.evaluate((el)=>({
+        clientHeight:el.clientHeight,
+        scrollHeight:el.scrollHeight,
+        overflow:getComputedStyle(el).overflow,
+        maxHeight:getComputedStyle(el).maxHeight
+      }));
+      expect(clipping.scrollHeight, `card ${i}: descrição não pode ser truncada`).toBeLessThanOrEqual(clipping.clientHeight+1);
+      expect(clipping.overflow).not.toBe('hidden');
+      expect(clipping.maxHeight).toBe('none');
+    }
+
+    if(width===390){
+      await page.locator('#sites-lps').screenshot({path:'screenshots/mobile/sites-lps-fixed-390.png'});
+    }
+  });
+}
+
 test('LPs recebem a camada mobile compartilhada e identidade específica', async ({ page }) => {
   const demos = [
     ['/demos/aurora-estetica/','demo-aurora'],
