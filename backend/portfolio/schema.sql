@@ -36,6 +36,20 @@ revoke all on all tables in schema portfolio from public, anon, authenticated;
 grant select, insert, update, delete on portfolio.leads to service_role;
 grant select, insert, delete on portfolio.rate_limits to service_role;
 
+create policy portfolio_leads_deny_public
+  on portfolio.leads
+  for all
+  to anon, authenticated
+  using (false)
+  with check (false);
+
+create policy portfolio_rate_limits_deny_public
+  on portfolio.rate_limits
+  for all
+  to anon, authenticated
+  using (false)
+  with check (false);
+
 comment on schema portfolio is 'Backend privado do formulário do portfólio. Não exposto ao Data API.';
 comment on table portfolio.leads is 'Briefings recebidos pelo formulário /contratar/.';
 comment on table portfolio.rate_limits is 'Janela curta de rate limiting; armazena somente fingerprint SHA-256, nunca IP em claro.';
