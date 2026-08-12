@@ -65,7 +65,7 @@ Deno.serve(async (req: Request) => {
   const budget = text(payload.budget, 80)
   const deadline = text(payload.deadline, 80)
   const description = text(payload.description, 5000)
-  const references = text(payload.references, 2500) || null
+  const referenceLinks = text(payload.references, 2500) || null
 
   if (name.length < 2 || !emailOk(email) || !projectType || !budget || !deadline || description.length < 30) {
     return json({ error: 'validation_failed' }, 400, origin)
@@ -90,17 +90,17 @@ Deno.serve(async (req: Request) => {
 
   await sql`insert into portfolio.rate_limits (fingerprint) values (${fingerprint})`
 
-  const metadata = JSON.stringify({
+  const metadata = {
     user_agent: userAgent,
     origin,
     received_via: 'edge-function',
-  })
+  }
 
   const [lead] = await sql<{ id: string; created_at: string }[]>`
     insert into portfolio.leads
-      (name, company, email, phone, project_type, budget, deadline, description, references, metadata)
+      (name, company, email, phone, project_type, budget, deadline, description, reference_links, metadata)
     values
-      (${name}, ${company}, ${email}, ${phone}, ${projectType}, ${budget}, ${deadline}, ${description}, ${references}, ${sql.json(metadata)})
+      (${name}, ${company}, ${email}, ${phone}, ${projectType}, ${budget}, ${deadline}, ${description}, ${referenceLinks}, ${sql.json(metadata)})
     returning id::text, created_at::text
   `
 
@@ -125,7 +125,7 @@ Deno.serve(async (req: Request) => {
       description,
       ``,
       `REFERÊNCIAS`,
-      references || 'Não informado',
+      referenceLinks || 'Não informado',
       ``,
       `Lead ID: ${lead.id}`,
     ].join('\n')
@@ -138,7 +138,7 @@ Deno.serve(async (req: Request) => {
         <hr>
         <p><strong>Tipo:</strong> ${esc(projectType)}<br><strong>Investimento:</strong> ${esc(budget)}<br><strong>Prazo:</strong> ${esc(deadline)}</p>
         <h3>Contexto</h3><p style="white-space:pre-wrap">${esc(description)}</p>
-        <h3>Referências</h3><p style="white-space:pre-wrap">${esc(references || 'Não informado')}</p>
+        <h3>Referências</h3><p style="white-space:pre-wrap">${esc(referenceLinks || 'Não informado')}</p>
         <hr><small>Lead ID: ${esc(lead.id)}</small>
       </div>`
 
