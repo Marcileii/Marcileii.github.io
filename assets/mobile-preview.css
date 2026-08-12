@@ -1,24 +1,49 @@
-/* Mobile portfolio preview fixes.
-   The portfolio card is responsible for the CTA; the embedded site preview
-   must remain a clean visual sample with no button covering its content. */
+/* Mobile portfolio preview rules.
+   On phones, previews are intentionally compact: site sample first, action bar
+   second, descriptive content in the card immediately after. Nothing floats
+   over the embedded page. */
 
 @media (max-width: 720px) {
   .site-demo-preview,
   .site-demo.featured .site-demo-preview {
-    height: clamp(460px, 128vw, 520px) !important;
+    display: grid !important;
+    grid-template-rows: 260px auto !important;
+    height: auto !important;
+    overflow: hidden !important;
+    background: #f3f0e8 !important;
   }
 
   .site-demo-preview iframe,
   .site-demo.featured .site-demo-preview iframe {
-    display: block;
+    display: block !important;
     width: 100% !important;
-    height: 100% !important;
+    height: 260px !important;
+    min-height: 0 !important;
     transform: none !important;
   }
 
-  /* The card already has a full-width "Abrir projeto completo" action below. */
   .preview-open {
-    display: none !important;
+    position: static !important;
+    inset: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 0 16px !important;
+    border: 0 !important;
+    border-top: 1px solid #3b3935 !important;
+    background: #11110f !important;
+    color: #f3f0e8 !important;
+    text-decoration: none !important;
+  }
+
+  .preview-open::after {
+    content: "Abrir";
+    color: var(--green);
+    font: 700 9px/1 "Courier New", monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
   }
 
   .site-demo-body,
@@ -28,7 +53,14 @@
     overflow: visible !important;
   }
 
-  /* Same rule for CRM/Agenda system previews. */
+  .site-demo-body p,
+  .site-demo.featured .site-demo-body p {
+    display: block !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* CRM/Agenda previews keep a taller operational viewport. */
   .system-preview {
     height: clamp(400px, 110vw, 470px) !important;
   }
@@ -49,7 +81,12 @@
 @media (max-width: 380px) {
   .site-demo-preview,
   .site-demo.featured .site-demo-preview {
-    height: 460px !important;
+    grid-template-rows: 235px auto !important;
+  }
+
+  .site-demo-preview iframe,
+  .site-demo.featured .site-demo-preview iframe {
+    height: 235px !important;
   }
 
   .system-preview {
