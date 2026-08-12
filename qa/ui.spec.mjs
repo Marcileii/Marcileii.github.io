@@ -43,7 +43,7 @@ for (const [mode, viewport] of viewports) {
       const tinyControls = await page.locator('button:not(.link):not(.text-btn), input, select, textarea').evaluateAll(els => els.filter(el => {
         const s=getComputedStyle(el), r=el.getBoundingClientRect();
         if (s.display==='none'||s.visibility==='hidden'||r.width===0||r.height===0) return false;
-        if (el.closest('[hidden]')) return false;
+        if (el.closest('[hidden]')||el.closest('.hp')) return false;
         return (el.tagName==='BUTTON' && r.height<28) || (['INPUT','SELECT'].includes(el.tagName) && r.height<34);
       }).map(el => ({tag:el.tagName,id:el.id,height:Math.round(el.getBoundingClientRect().height),text:(el.textContent||el.getAttribute('placeholder')||'').trim().slice(0,40)})));
       expect(tinyControls, `${path} possui controles pequenos demais: ${JSON.stringify(tinyControls)}`).toEqual([]);
@@ -105,7 +105,16 @@ test('LeadFlow: formulário produz resultado da automação', async ({ page }) =
   await expect(page.locator('#crmName')).not.toHaveText('—');
 });
 
-test('Contratar: briefing gera email revisável sem envio automático', async ({ page }) => {
+test('Contratar: envia briefing ao backend e confirma recebimento', async ({ page }) => {
+  let payload;
+  await page.route('https://qojhrihrfkoztetxpjgp.supabase.co/functions/v1/portfolio-lead', async route => {
+    payload=JSON.parse(route.request().postData()||'{}');
+    await route.fulfill({
+      status:201,
+      contentType:'application/json',
+      body:JSON.stringify({ok:true,lead_id:'12345678-1234-1234-1234-123456789abc',email_sent:true})
+    });
+  });
   await page.goto('/contratar/', { waitUntil:'domcontentloaded' });
   await page.locator('[name="name"]').fill('Cliente QA');
   await page.locator('[name="email"]').fill('qa@example.com');
@@ -115,6 +124,9 @@ test('Contratar: briefing gera email revisável sem envio automático', async ({
   await page.locator('#briefingForm textarea[name="description"]').fill('Preciso de um sistema para organizar clientes, oportunidades, tarefas e acompanhar o funil comercial.');
   await page.locator('#briefingForm button[type="submit"]').click();
   await expect(page.locator('#result')).toBeVisible();
-  await expect(page.locator('#preview')).toContainText('Cliente QA');
-  await expect(page.locator('#emailLink')).toHaveAttribute('href', /^mailto:marcileibrandao922@gmail.com/);
+  await expect(page.locator('#leadRef')).toContainText('12345678');
+  expect(payload.name).toBe('Cliente QA');
+  expect(payload.email).toBe('qa@example.com');
+  expect(payload.type).toBe('Sistema Web');
+  expect(typeof payload.started_at).toBe('number');
 });

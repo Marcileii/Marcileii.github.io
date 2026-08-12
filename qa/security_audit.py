@@ -12,10 +12,10 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-TEXT_SUFFIXES = {".html", ".js", ".css", ".json", ".webmanifest", ".yml", ".yaml", ".xml", ".txt", ".svg"}
+TEXT_SUFFIXES = {".html", ".js", ".ts", ".css", ".json", ".webmanifest", ".yml", ".yaml", ".xml", ".txt", ".svg"}
 SOURCE_ROOTS = [
     "index.html", "404.html", "favicon.svg", "manifest.webmanifest", "robots.txt", "sitemap.xml",
-    "assets", "cases", "contratar", "demos", ".github/workflows",
+    "assets", "cases", "contratar", "demos", "backend", ".github/workflows",
 ]
 SKIP_DIRS = {".git", "dist", "node_modules", "playwright-report", "test-results", "screenshots", "__pycache__"}
 
@@ -41,19 +41,28 @@ DANGEROUS_CODE = [
 ]
 
 NETWORK_CODE = [
-    ("fetch()", re.compile(r"\bfetch\s*\(")),
     ("XMLHttpRequest", re.compile(r"\bXMLHttpRequest\b")),
     ("WebSocket", re.compile(r"\bWebSocket\s*\(")),
     ("EventSource", re.compile(r"\bEventSource\s*\(")),
     ("sendBeacon", re.compile(r"\bnavigator\.sendBeacon\s*\(")),
 ]
 
+ALLOWED_BROWSER_FETCHES = {
+    "assets/hire.js": {"https://qojhrihrfkoztetxpjgp.supabase.co/functions/v1/portfolio-lead"},
+}
+FETCH_ANY = re.compile(r"\bfetch\s*\(")
+FETCH_LITERAL = re.compile(r"\bfetch\s*\(\s*(['\"])(https?://[^'\"]+)\1")
+
 FORBIDDEN_PUBLISHED = {
-    ".github", "qa", "docs", "scripts", "README.md", "CONTRIBUTING.md", "SECURITY.md", ".gitignore"
+    ".github", "qa", "docs", "scripts", "backend", "README.md", "CONTRIBUTING.md", "SECURITY.md", ".gitignore"
 }
 
 CSP_REQUIRED = [
-    "default-src 'self'", "base-uri 'self'", "object-src 'none'", "connect-src 'none'", "frame-src 'self'"
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "connect-src 'self' https://qojhrihrfkoztetxpjgp.supabase.co",
+    "frame-src 'self'",
 ]
 
 
@@ -82,6 +91,21 @@ def line_for(text: str, pos: int) -> int:
     return text.count("\n", 0, pos) + 1
 
 
+def audit_browser_fetches(text: str, rel: Path, errors: list[str]):
+    calls = list(FETCH_ANY.finditer(text))
+    literals = list(FETCH_LITERAL.finditer(text))
+    if not calls:
+        return
+    if len(calls) != len(literals):
+        errors.append(f"{rel}: browser fetch must use an auditable literal HTTPS endpoint")
+        return
+    allowed = ALLOWED_BROWSER_FETCHES.get(rel.as_posix(), set())
+    for match in literals:
+        url = match.group(2)
+        if url not in allowed:
+            errors.append(f"{rel}:{line_for(text, match.start())}: browser fetch endpoint is not approved: {url}")
+
+
 def audit_secrets_and_code(base: Path, roots: list[str], errors: list[str], warnings: list[str]):
     seen: set[Path] = set()
     for name in roots:
@@ -99,6 +123,7 @@ def audit_secrets_and_code(base: Path, roots: list[str], errors: list[str], warn
                 for match in pattern.finditer(text):
                     errors.append(f"{rel}:{line_for(text, match.start())}: forbidden {label}")
             if path.suffix.lower() in {".js", ".html"}:
+                audit_browser_fetches(text, rel, errors)
                 for label, pattern in NETWORK_CODE:
                     for match in pattern.finditer(text):
                         errors.append(f"{rel}:{line_for(text, match.start())}: unexpected browser network API {label}")

@@ -35,11 +35,11 @@ CSP = (
     "style-src 'self' 'unsafe-inline'; "
     "img-src 'self' data: https:; "
     "font-src 'self' data:; "
-    "connect-src 'none'; "
+    "connect-src 'self' https://qojhrihrfkoztetxpjgp.supabase.co; "
     "frame-src 'self'; "
     "media-src 'self' https:; "
     "manifest-src 'self'; "
-    "form-action 'self' mailto:; "
+    "form-action 'self'; "
     "upgrade-insecure-requests"
 )
 SECURITY_META = (
