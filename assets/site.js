@@ -5,6 +5,11 @@ mobileCss.rel='stylesheet';
 mobileCss.href='/assets/mobile.css?v=2';
 document.head.appendChild(mobileCss);
 
+const mobilePreviewCss=document.createElement('link');
+mobilePreviewCss.rel='stylesheet';
+mobilePreviewCss.href='/assets/mobile-preview.css?v=1';
+document.head.appendChild(mobilePreviewCss);
+
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
