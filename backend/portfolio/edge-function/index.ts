@@ -3,6 +3,7 @@ import postgres from 'npm:postgres@3.4.7'
 
 const ALLOWED_ORIGIN = 'https://marcileii.github.io'
 const RECIPIENT = 'marcileibrandao922@gmail.com'
+const HEALTHCHECK_VALUE = 'portfolio-backend'
 const sql = postgres(Deno.env.get('SUPABASE_DB_URL')!, { prepare: false, max: 1, idle_timeout: 10 })
 
 const cors = (origin: string | null) => ({
@@ -46,6 +47,13 @@ Deno.serve(async (req: Request) => {
     payload = await req.json()
   } catch {
     return json({ error: 'invalid_json' }, 400, origin)
+  }
+
+  // Healthcheck sem efeito colateral: gera uma consulta real ao Postgres,
+  // mas nunca cria lead, consome rate limit ou dispara email.
+  if (text(payload.healthcheck, 40) === HEALTHCHECK_VALUE) {
+    await sql`select 1`
+    return json({ ok: true, health: true }, 200, origin)
   }
 
   // Honeypot: pessoas reais nunca preenchem esse campo.

@@ -14,7 +14,7 @@ function errorMessage(code){
   if(code==='rate_limited')return 'Recebi várias tentativas deste dispositivo. Aguarde alguns minutos e tente novamente.';
   if(code==='validation_failed')return 'Revise os campos do formulário e tente novamente.';
   if(code==='invalid_form_timing')return 'Atualize a página e tente enviar novamente.';
-  return 'Não consegui enviar agora. Tente novamente em alguns instantes.';
+  return 'Não consegui enviar agora. Tente novamente; se persistir, escreva para marcileibrandao922@gmail.com.';
 }
 
 form.addEventListener('submit',async e=>{
@@ -23,6 +23,8 @@ form.addEventListener('submit',async e=>{
   if(!form.reportValidity())return;
   const data=Object.fromEntries(new FormData(form).entries());
   const payload={...data,started_at:startedAt};
+  const controller=new AbortController();
+  const timeoutId=setTimeout(()=>controller.abort(),15000);
   setSending(true);
   try{
     const response=await fetch('https://qojhrihrfkoztetxpjgp.supabase.co/functions/v1/portfolio-lead',{
@@ -30,7 +32,8 @@ form.addEventListener('submit',async e=>{
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(payload),
       credentials:'omit',
-      cache:'no-store'
+      cache:'no-store',
+      signal:controller.signal
     });
     const body=await response.json().catch(()=>({}));
     if(!response.ok||!body.ok)throw Object.assign(new Error('submit_failed'),{code:body.error||'server_error'});
@@ -44,6 +47,7 @@ form.addEventListener('submit',async e=>{
     formState.textContent=errorMessage(error?.code);
     track('briefing_submit_error',{code:error?.code||'network_error'});
   }finally{
+    clearTimeout(timeoutId);
     setSending(false);
   }
 });
