@@ -13,7 +13,7 @@ Portfólio profissional de **Desenvolvimento Web, Sistemas, CRM, Automação, Da
 
 ### Produto e cases
 - **ServiceFlow** — produto próprio para gestão de serviços técnicos.
-- **Omnichannel Performance Hub** — case corporativo anonimizado de dashboard multicanal.
+- **Dashboard de Resultados por Jornada** — case anonimizado com demonstração interativa de KPIs e arquitetura em duas CloudPages.
 - **Dynamic Recommendation Engine** — case anonimizado de personalização e recomendação dinâmica.
 
 ### Sites & Landing Pages
