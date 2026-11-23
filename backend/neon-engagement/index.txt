@@ -1,0 +1,58 @@
+import { createHmac } from "node:crypto";
+const CASE="jornadas-crm";
+const ORIGINS=new Set(["https://marcilei.com.br","https://www.marcilei.com.br","https://marcileii.github.io","http://localhost:4173"]);
+function output(data,status=200,origin=""){return new Response(JSON.stringify(data),{status,headers:{"Content-Type":"application/json;charset=utf-8","Cache-Control":"no-store","Vary":"Origin",...(ORIGINS.has(origin)?{"Access-Control-Allow-Origin":origin}:{})}});}
+function hash(value){return createHmac("sha256",process.env.DATABASE_URL).update(String(value)).digest("hex");}
+async function query(sql,params=[]){
+ const conn=process.env.DATABASE_URL;
+ if(!conn)throw Error("Database not configured");
+ const endpoint=new URL(conn).hostname;
+ const res=await fetch("https://"+endpoint+"/sql",{method:"POST",headers:{"Content-Type":"application/json","Neon-Connection-String":conn},body:JSON.stringify({query:sql,params}),signal:AbortSignal.timeout(12000)});
+ if(!res.ok)throw Error("Database query returned "+res.status);
+ const data=await res.json();return data.rows||[];
+}
+function validVisitor(x){return typeof x==="string"&&/^[a-f0-9-]{36}$/i.test(x);}
+async function summary(visitor){
+ const [counter]=await query("SELECT count(*)::int AS count FROM public.portfolio_case_likes WHERE case_id=$1",[CASE]);
+ const comments=await query("SELECT id,author_name,body,created_at FROM public.portfolio_case_comments WHERE case_id=$1 AND status='visible' ORDER BY created_at DESC LIMIT 50",[CASE]);
+ let liked=false;
+ if(validVisitor(visitor)){
+  const [flag]=await query("SELECT EXISTS(SELECT 1 FROM public.portfolio_case_likes WHERE case_id=$1 AND visitor_hash=$2) AS liked",[CASE,hash("visitor:"+visitor)]);
+  liked=flag?.liked===true||flag?.liked==="t";
+ }
+ return {ok:true,likes:Number(counter?.count||0),liked,comments};
+}
+export default {async fetch(request){
+ const origin=request.headers.get("origin")||"";
+ if(request.method==="OPTIONS"){
+  return ORIGINS.has(origin)?new Response(null,{status:204,headers:{"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Methods":"GET, POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Access-Control-Max-Age":"7200","Vary":"Origin"}}):new Response(null,{status:403});
+ }
+ if(origin&&!ORIGINS.has(origin))return output({ok:false,error:"origin_not_allowed"},403);
+ if(request.method!=="GET"&&request.method!=="POST")return output({ok:false,error:"method_not_allowed"},405,origin);
+ try{
+  if(request.method==="GET")return output(await summary(new URL(request.url).searchParams.get("visitor")||""),200,origin);
+  if(Number(request.headers.get("content-length")||0)>5000)return output({ok:false,error:"payload_too_large"},413,origin);
+  const data=await request.json();
+  if(!data||typeof data!=="object")return output({ok:false,error:"invalid_payload"},400,origin);
+  if(data.website)return output({ok:true,ignored:true},200,origin);
+  const ip=(request.headers.get("x-forwarded-for")||"").split(",")[0].trim()||request.headers.get("x-real-ip")||"unknown";
+  const iphash=hash("ip:"+ip);
+  if(data.action==="like"){
+   if(!validVisitor(data.visitor))return output({ok:false,error:"invalid_visitor"},400,origin);
+   const visitorhash=hash("visitor:"+data.visitor);
+   const added=await query("INSERT INTO public.portfolio_case_likes(case_id,visitor_hash,ip_hash) SELECT $1,$2,$3 WHERE (SELECT count(*) FROM public.portfolio_case_likes WHERE ip_hash=$3 AND created_at>now()-interval '1 day') < 5 ON CONFLICT DO NOTHING RETURNING visitor_hash",[CASE,visitorhash,iphash]);
+   return output({...await summary(data.visitor),accepted:added.length>0},200,origin);
+  }
+  if(data.action==="comment"){
+   const name=typeof data.name==="string"?data.name.trim().replace(/\s+/g," "):"";
+   const comment=typeof data.comment==="string"?data.comment.trim():"";
+   const ms=Date.now()-Number(data.startedAt);
+   if(name.length<2||name.length>60||comment.length<8||comment.length>800||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(comment)||/<[^>]+>|https?:\/\/|www\.|@[\w.-]+\.[a-z]{2,}/i.test(comment))return output({ok:false,error:"validation_failed"},400,origin);
+   if(!Number.isFinite(ms)||ms<4000||ms>86400000)return output({ok:false,error:"invalid_form_timing"},400,origin);
+   const added=await query("INSERT INTO public.portfolio_case_comments(case_id,author_name,body,ip_hash) SELECT $1,$2,$3,$4 WHERE (SELECT count(*) FROM public.portfolio_case_comments WHERE ip_hash=$4 AND created_at>now()-interval '1 day') < 3 AND (SELECT count(*) FROM public.portfolio_case_comments WHERE ip_hash=$4 AND created_at>now()-interval '2 minutes') = 0 RETURNING id",[CASE,name,comment,iphash]);
+   if(!added.length)return output({ok:false,error:"rate_limited"},429,origin);
+   return output(await summary(""),201,origin);
+  }
+  return output({ok:false,error:"invalid_action"},400,origin);
+ }catch(e){console.error("engagement failure",e instanceof Error?e.message:"unknown");return output({ok:false,error:"temporarily_unavailable"},503,origin);}
+}};
