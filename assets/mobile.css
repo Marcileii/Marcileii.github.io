@@ -214,3 +214,50 @@
   .meta{grid-template-columns:1fr}
   .meta dd{padding-bottom:6px}
 }
+
+
+/* Mobile hero: retrato ao lado do titulo, sem empurrar a foto para baixo dos CTAs. */
+@media(max-width:720px){
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) clamp(100px,30vw,140px);
+    grid-template-areas:
+      "kicker kicker"
+      "title portrait"
+      "bottom bottom";
+    column-gap:14px;
+    row-gap:0;
+    align-items:start;
+  }
+  .hero-grid > div:first-child{display:contents}
+  .hero-grid .hero-kicker{grid-area:kicker;margin-bottom:23px}
+  .hero-grid > div:first-child > h1{
+    grid-area:title;
+    min-width:0;
+    max-width:100%;
+    align-self:start;
+    font-size:clamp(36px,10vw,52px)!important;
+    line-height:.96;
+    letter-spacing:-.057em;
+    overflow-wrap:normal;
+  }
+  .hero-grid .portrait-wrap{
+    grid-area:portrait;
+    position:relative;
+    justify-self:end;
+    align-self:start;
+    width:100%;
+    max-width:140px;
+    min-width:0;
+    margin:3px 0 0;
+  }
+  .hero-grid .portrait{
+    display:block;
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    object-position:center 20%;
+  }
+  .hero-grid .portrait-note{display:none}
+  .hero-grid .hero-bottom{grid-area:bottom;margin-top:28px;min-width:0}
+}
