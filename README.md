@@ -2,7 +2,8 @@
 
 Portfólio profissional de **Desenvolvimento Web, Sistemas, CRM, Automação, Dados e Integrações**.
 
-🌐 Produção: https://marcileii.github.io/
+🌐 Produção (domínio próprio na Vercel): https://marcilei.com.br/  
+🌐 Espelho no GitHub Pages: https://marcileii.github.io/
 
 ## Estrutura do conteúdo
 
@@ -23,7 +24,7 @@ Aurora Estética, Nexo Contábil, Café Atelier, Vista Imóveis e Atlas Studio s
 
 ## Fluxo Git
 
-- `main` — produção estável publicada no GitHub Pages.
+- `main` — código de produção, implantado automaticamente na Vercel (domínio `marcilei.com.br`) e também publicado pelo GitHub Pages.
 - `develop` — integração e validação antes da produção.
 - `feature/*` — desenvolvimento isolado por funcionalidade.
 
