@@ -37,7 +37,7 @@ async function request(data){
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),16000);
  try{
   const opts=data?{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),signal:controller.signal,cache:"no-store"}:{signal:controller.signal,cache:"no-store"};
-  const res=await fetch(data?API:API+"?visitor="+encodeURIComponent(vid),opts);
+  const res=data?await fetch("https://br-shiny-king-bbqddpnl-engagement.compute.c-15.us-east-1.aws.neon.tech/",opts):await fetch("https://br-shiny-king-bbqddpnl-engagement.compute.c-15.us-east-1.aws.neon.tech/?visitor="+encodeURIComponent(vid),opts);
   const body=await res.json();
   if(!res.ok||!body.ok)throw new Error(body.error||"temporarily_unavailable");
   return body;
