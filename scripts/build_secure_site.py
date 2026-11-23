@@ -35,7 +35,7 @@ CSP = (
     "style-src 'self' 'unsafe-inline'; "
     "img-src 'self' data: https:; "
     "font-src 'self' data:; "
-    "connect-src 'self' https://qojhrihrfkoztetxpjgp.supabase.co; "
+    "connect-src 'self' https://qojhrihrfkoztetxpjgp.supabase.co https://br-shiny-king-bbqddpnl-engagement.compute.c-15.us-east-1.aws.neon.tech; "
     "frame-src 'self'; "
     "media-src 'self' https:; "
     "manifest-src 'self'; "
