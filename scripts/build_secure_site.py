@@ -70,6 +70,12 @@ def add_rel_to_blank_links(html: str) -> str:
 
 def harden_html(path: Path) -> None:
     html = path.read_text(encoding="utf-8")
+    # All routes use the same portfolio tab icon (including newly added pages).
+    if not re.search(r"""<link\b[^>]*\brel\s*=\s*["\'](?:shortcut\s+)?icon["\']""", html, re.I):
+        opening = re.search(r"<head\b[^>]*>", html, re.I)
+        if not opening:
+            raise RuntimeError(f"HTML has no <head>: {path}")
+        html = html[: opening.end()] + '\n<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">' + html[opening.end() :]
     if "Content-Security-Policy" not in html:
         opening = re.search(r"<head\b[^>]*>", html, re.I)
         if not opening:
