@@ -20,13 +20,13 @@ Para cada tema, confirmar singularidade: problema, diagnóstico, gancho e pergun
 
 | Projeto | Tipo | Prova/escopo | Link |
 |---|---|---|---|
-| Omnichannel Performance Hub | Case corporativo **anonimizado** | Arquitetura SFMC + SSJS + JS + SQL; leitura multicanal e filtros | https://marcileii.github.io/cases/omnichannel-performance/ |
-| Dynamic Recommendation Engine | Case corporativo **anonimizado** | AMPscript, SQL, fallback e tracking na personalização de campanhas | https://marcileii.github.io/cases/recommendation-engine/ |
-| ServiceFlow | **Protótipo front-end em evolução** | Conceito de operação para empresas de serviços técnicos; React/Vite | https://marcileii.github.io/cases/serviceflow/ |
-| LeadFlow | **Demo interativa** | Fluxo de lead, qualificação, score e decisão rumo ao CRM | https://marcileii.github.io/demos/leadflow/ |
-| CRM Pro | **Demo interativa no navegador** | Clientes, pipeline, Kanban, tarefas e painel. Estado local do navegador, não SaaS em produção | https://marcileii.github.io/demos/crm-pro/ |
-| AgendaPro | **Demo interativa no navegador** | Serviços, profissionais, horários, confirmação e área administrativa | https://marcileii.github.io/demos/agendapro/ |
-| Sites/LPs demonstrativos | Demos com **marcas fictícias** | Aurora Estética, Nexo Contábil, Café Atelier, Vista Imóveis e Atlas Studio | https://marcileii.github.io/ |
+| Dashboard de Resultados por Jornada | Case corporativo **anonimizado** com demonstração interativa | SFMC, SQL, SSJS, WSProxy e duas CloudPages; envios, aberturas, cliques e filtros por jornada/canal/período, com dados fictícios | https://marcilei.com.br/cases/omnichannel-performance/ |
+| Dynamic Recommendation Engine | Case corporativo **anonimizado** | AMPscript, SQL, fallback e tracking na personalização de campanhas | https://marcilei.com.br/cases/recommendation-engine/ |
+| ServiceFlow | **Protótipo front-end em evolução** | Conceito de operação para empresas de serviços técnicos; React/Vite | https://marcilei.com.br/cases/serviceflow/ |
+| LeadFlow | **Demo interativa** | Fluxo de lead, qualificação, score e decisão rumo ao CRM | https://marcilei.com.br/demos/leadflow/ |
+| CRM Pro | **Demo interativa no navegador** | Clientes, pipeline, Kanban, tarefas e painel. Estado local do navegador, não SaaS em produção | https://marcilei.com.br/demos/crm-pro/ |
+| AgendaPro | **Demo interativa no navegador** | Serviços, profissionais, horários, confirmação e área administrativa | https://marcilei.com.br/demos/agendapro/ |
+| Sites/LPs demonstrativos | Demos com **marcas fictícias** | Aurora Estética, Nexo Contábil, Café Atelier, Vista Imóveis e Atlas Studio | https://marcilei.com.br/ |
 
 **Repositório para consulta:** https://github.com/Marcileii/Marcileii.github.io  
 **Perfil geral:** https://github.com/Marcileii  
@@ -34,8 +34,8 @@ Alguns repositórios como ServiceFlow, Budget-MKT e Cloud-Page-Fluxo-Associa-o s
 
 ## Sequenciamento sugerido (não é agendamento nem publicação)
 
-- Terças: escolher dores de SFMC não repetidas, priorizando experiência demonstrável.
-- Quintas: alternar cases reais anonimizados de Marketing Cloud com demos/produtos próprios; inicialmente priorizar cases mais próximos da SFMC.
+- Terças: escolher dores de SFMC não repetidas, priorizando experiência demonstrável. Tema de chave primária na DE de destino já **agendado para 24/11/2026**.
+- Quintas: alternar cases reais anonimizados de Marketing Cloud com demos/produtos próprios; inicialmente priorizar cases mais próximos da SFMC. Dashboard de Resultados por Jornada já **agendado para 26/11/2026**.
 - Não chamar demo de projeto implantado nem protótipo de software pronto.
 - Sempre verificar repositórios atuais: projetos, READMEs e links podem ter evoluído.
 
