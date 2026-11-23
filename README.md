@@ -5,6 +5,12 @@ Portfólio profissional de **Desenvolvimento Web, Sistemas, CRM, Automação, Da
 🌐 Produção (domínio próprio na Vercel): https://marcilei.com.br/  
 🌐 Espelho no GitHub Pages: https://marcileii.github.io/
 
+## Continuar o projeto em outro chat
+
+Antes de fazer alterações, leia o **[Guia de continuidade do portfólio](./docs/GUIA_CONTINUIDADE.md)**. Ele reúne arquitetura, rotas, foto atual, case de jornadas, camada Neon de engajamento, estratégia LinkedIn, testes mobile, histórico das decisões e instruções para retomar em outro chat.
+
+Em outro chat, compartilhe o link do guia e peça a leitura da `main` atual. A leitura precisa ser solicitada; o histórico completo de conversas não é carregado automaticamente pelo GitHub.
+
 ## Estrutura do conteúdo
 
 ### Sistemas funcionais
