@@ -49,6 +49,7 @@ NETWORK_CODE = [
 
 ALLOWED_BROWSER_FETCHES = {
     "assets/hire.js": {"https://qojhrihrfkoztetxpjgp.supabase.co/functions/v1/portfolio-lead"},
+    "assets/case-engagement.js": {"https://br-shiny-king-bbqddpnl-engagement.compute.c-15.us-east-1.aws.neon.tech/", "https://br-shiny-king-bbqddpnl-engagement.compute.c-15.us-east-1.aws.neon.tech/?visitor="},
 }
 FETCH_ANY = re.compile(r"\bfetch\s*\(")
 FETCH_LITERAL = re.compile(r"\bfetch\s*\(\s*(['\"])(https?://[^'\"]+)\1")
@@ -61,7 +62,7 @@ CSP_REQUIRED = [
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
-    "connect-src 'self' https://qojhrihrfkoztetxpjgp.supabase.co",
+    "connect-src 'self' https://qojhrihrfkoztetxpjgp.supabase.co https://br-shiny-king-bbqddpnl-engagement.compute.c-15.us-east-1.aws.neon.tech",
     "frame-src 'self'",
 ]
 
