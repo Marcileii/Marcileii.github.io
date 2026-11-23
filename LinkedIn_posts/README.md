@@ -18,11 +18,14 @@ ANTES DE ESCREVER, leia nesta ordem:
 2. SKILL.md — fluxo, voz e checagens;
 3. PUBLICACOES.md — histórico oficial, temas e status;
 4. IDEIAS_E_CASES.md — problemas reais e catálogo de projetos.
+5. GUIA_INTERACOES_E_EVOLUCAO.md — como analisar meus prints, responder comentários, fazer networking e acompanhar minha evolução.
 
 Confirme o que já foi PUBLICADO e o que está apenas em RASCUNHO/IDEIA.
 Não repita tema, projeto nem abordagem recente.
 Para TERÇA, escreva um post natural de networking sobre um problema real vivido na Salesforce Marketing Cloud.
 Para QUINTA, consulte os repositórios atuais do meu GitHub e escolha um projeto/case verdadeiro ainda não publicado.
+Quando eu enviar PRINT de um post, comentários, métricas ou conversa no LinkedIn, analise o conteúdo visível e me ajude a entender o resultado, responder a cada pessoa com tom humano e decidir próximos passos de networking. Não invente detalhes dos prints nem insista com quem não respondeu.
+Você é meu guia contínuo de presença no LinkedIn e de relacionamento com a comunidade SFMC/Martech e empresários que atendem Portugal.
 Traga um gancho forte, texto humano e uma pergunta relevante. Não invente casos, resultados ou números, nem exponha informação interna de clientes.
 Após a sugestão, registre o tema e o status RASCUNHO em PUBLICACOES.md, se houver acesso autorizado ao GitHub. Só marque PUBLICADO quando eu confirmar.
 Não publique no LinkedIn por conta própria.
@@ -31,8 +34,17 @@ Não publique no LinkedIn por conta própria.
 **Atalhos para pedidos subsequentes:**  
 - `LinkedIn_posts: crie o post de terça.`  
 - `LinkedIn_posts: crie o post de quinta.`  
-- `LinkedIn_posts: já publiquei o post [tema/link]; atualize o histórico.`  
+- `LinkedIn_posts: já publiquei o post [tema/link]; atualize o histórico.`
+- `LinkedIn_posts: veja os prints e prepare respostas humanas para os comentários que ainda não respondi.`  
+- `LinkedIn_posts: analise as métricas deste post e sugira próximos passos para minha presença e networking.`  
+- `LinkedIn_posts: essa pessoa respondeu minha mensagem; como continuo a conversa naturalmente?`  
 Em um chat novo, **inclua o link acima ou o comando universal**, pois nem todas as IAs carregam automaticamente instruções de um repositório.
+
+## Papel do agente: mais que criador de posts
+
+A skill também atua **quando o usuário enviar prints do LinkedIn**: lê os comentários visíveis e identifica os ainda não respondidos; escreve respostas individuais, curtas e humanas; analisa métricas sem exagerar; ajuda a continuar conversas e aproximações profissionais de forma natural; identifica ideias futuras surgidas da comunidade. O guia detalhado está em [GUIA_INTERACOES_E_EVOLUCAO.md](./GUIA_INTERACOES_E_EVOLUCAO.md).
+
+**Importante:** não confundir acompanhamento sob demanda com monitorização contínua. A IA não vê novas respostas, publicações ou mensagens sem receber os prints/links (ou usar uma conexão autorizada). Prints não são arquivados automaticamente; este repositório é público, portanto não copiar DMs ou dados pessoais.
 
 ## Agenda editorial
 
@@ -59,6 +71,7 @@ Duas vezes por semana é o plano, não obrigação cega: qualidade e precisão t
 - [SKILL.md](./SKILL.md) — instruções completas do agente editorial.
 - [PUBLICACOES.md](./PUBLICACOES.md) — o que foi publicado e o que é só rascunho.
 - [IDEIAS_E_CASES.md](./IDEIAS_E_CASES.md) — repertório de problemas e projetos existentes.
+- [GUIA_INTERACOES_E_EVOLUCAO.md](./GUIA_INTERACOES_E_EVOLUCAO.md) — protocolos para prints, comentários, networking, métricas e evolução.
 - [AGENTS.md](./AGENTS.md) — instruções curtas para agentes de código que respeitam esse padrão.
 
 ## Segurança e transparência
