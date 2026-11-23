@@ -108,6 +108,38 @@
 @media(max-width:1080px){.cs-demo-kpis{grid-template-columns:repeat(3,1fr)}.cs-data-panels{grid-template-columns:1fr}.cs-architecture{grid-template-columns:repeat(3,1fr)}.cs-node:nth-child(3):after{display:none}}
 @media(max-width:720px){.cs-hero{padding-top:40px}.cs-hero h1{font-size:clamp(49px,10vw,72px)}.cs-subtitle{font-size:19px}.cs-summary{grid-template-columns:1fr;gap:16px}.cs-tabs-wrap{top:58px}.cs-tab{padding:12px 13px;font-size:12px}.cs-demo-inner{padding:12px}.cs-filters{grid-template-columns:1fr}.cs-demo-head{padding:15px}.cs-demo-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-data-card{padding:11px}.cs-takeaways{grid-template-columns:1fr}.cs-why{grid-template-columns:1fr;gap:10px}.cs-architecture{grid-template-columns:1fr}.cs-node{min-height:auto}.cs-node:after{content:"↓";top:auto;bottom:-16px;left:50%;right:auto;transform:translateX(-50%)}.cs-node:nth-child(3):after{display:block}.cs-tech-split{grid-template-columns:1fr}.cs-stage{padding:25px 0 40px}}
 @media(prefers-reduced-motion:reduce){.cs-stage *, .cs-stage *:before,.cs-stage *:after{scroll-behavior:auto;transition:none}}
+
+.eng-wrap{border-top:1px solid var(--line);padding:70px 0 86px}
+.eng-head{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;margin-bottom:28px}
+.eng-head h2{font:400 clamp(36px,5vw,62px)/.95 Georgia,serif;letter-spacing:-.05em;margin:5px 0 12px}
+.eng-head p{color:var(--muted);max-width:720px;font-size:15px;line-height:1.65;margin:0}
+.eng-like{display:inline-flex;gap:10px;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;background:var(--white);cursor:pointer;font-weight:800;font-size:13px}
+.eng-like:hover:not(:disabled){background:var(--green)}
+.eng-like[aria-pressed="true"]{background:var(--green);cursor:default}
+.eng-like svg{height:19px;width:19px}
+.eng-like:disabled:not([aria-pressed="true"]){opacity:.55;cursor:wait}
+.eng-grid{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:36px}
+.eng-form{border:1px solid var(--line);background:var(--white);padding:23px;align-self:start}
+.eng-form h3,.eng-list h3{font:400 29px/1.1 Georgia,serif;margin:0 0 18px}
+.eng-form label{display:grid;gap:7px;margin:0 0 15px;font-size:12px;font-weight:800}
+.eng-form input,.eng-form textarea{display:block;width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);padding:12px;font:14px Arial,sans-serif}
+.eng-form textarea{resize:vertical;min-height:116px;line-height:1.5}
+.eng-form input:focus,.eng-form textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.eng-submit{min-height:44px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:white;padding:10px 18px;font-weight:800;cursor:pointer}
+.eng-submit:hover:not(:disabled){background:var(--accent);border-color:var(--accent)}
+.eng-submit:disabled{opacity:.55;cursor:wait}
+.eng-privacy{margin:15px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.eng-hp{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+.eng-list{min-width:0}
+.eng-comment{padding:18px 0;border-bottom:1px solid var(--line)}
+.eng-comment-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.eng-comment-head strong{font-size:14px}
+.eng-comment-head time{font-size:11px;color:var(--muted)}
+.eng-comment p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.7;margin:10px 0 0}
+.eng-empty{padding:20px;border:1px dashed var(--line);color:var(--muted);font-size:14px}
+#engStatus{min-height:20px;font-size:13px;color:#34530c;margin:13px 0}
+#engStatus[data-error="true"]{color:#b33220}
+@media(max-width:720px){.eng-wrap{padding:47px 0 60px}.eng-head{grid-template-columns:1fr;gap:17px}.eng-head .eng-like{justify-self:start}.eng-grid{grid-template-columns:1fr;gap:23px}.eng-form{padding:18px}}
 </style>
 </head>
 <body>
@@ -188,7 +220,16 @@
 <div class="cs-footer-note"><strong>Sobre esta reconstrução:</strong> a experiência acima usa apenas números e nomes de jornadas fictícios. A arquitetura foi simplificada para fins educacionais. Nenhum código, URL de CloudPage, credencial, identificador de Data Extension ou dado real de cliente foi incluído.</div>
 <div class="cs-links"><a href="#csTabOverview" id="csBackDemo">Voltar à demonstração →</a><a href="/#work">Mais projetos</a></div>
 </section>
-</div></main>
+</div><section class="eng-wrap" id="comunidade"><div class="wrap">
+<div class="eng-head"><div><span class="cs-index">03 / Comunidade</span><h2>O que você achou deste case?</h2><p>Curta se a solução fez sentido e compartilhe uma experiência ou dúvida técnica. Quero trocar ideias com outros profissionais de CRM e desenvolvimento.</p></div>
+<button type="button" id="engLike" class="eng-like" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 4.7a5.4 5.4 0 0 0-7.7 0L12 5.8l-1.1-1.1a5.4 5.4 0 1 0-7.7 7.7L12 21l8.8-8.6a5.4 5.4 0 0 0 0-7.7Z"/></svg><span>Curtir este case</span><strong id="engCount">—</strong></button></div>
+<div class="eng-grid"><form class="eng-form" id="engForm"><h3>Deixe seu comentário</h3>
+<label>Seu nome<input type="text" id="engName" name="name" minlength="2" maxlength="60" autocomplete="name" placeholder="Como podemos te chamar?" required></label>
+<label>Seu comentário<textarea id="engText" name="comment" minlength="8" maxlength="800" placeholder="O que achou da solução? Já construiu algo parecido?" required></textarea></label>
+<label class="eng-hp" aria-hidden="true">Website<input id="engWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></label>
+<button class="eng-submit" type="submit" id="engSubmit">Publicar comentário →</button><p class="eng-privacy">Seu nome e comentário serão públicos. Não inclua informações pessoais ou confidenciais. Até 3 comentários por dia.</p><p id="engStatus" role="status" aria-live="polite"></p></form>
+<div class="eng-list"><h3 id="engCommentsCount">Comentários</h3><div id="engComments" aria-live="polite"><p class="eng-empty">Carregando comentários…</p></div></div>
+</div></div></section></main>
 <footer><div class="wrap foot"><span>Marcilei Brandão · 2026 · Case demonstrativo</span><div class="foot-links"><a href="/">Portfólio</a><a href="/#work">Projetos</a></div></div></footer>
 <script>
 (function(){
@@ -284,4 +325,5 @@ render();
 })();
 </script>
 <script src="/assets/site.js"></script>
+<script src="/assets/case-engagement.js" defer></script>
 </body></html>
