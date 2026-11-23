@@ -21,6 +21,20 @@ test('mobile: os previews carregam quando entram na área visível',async ({page
   expect(colors.html.length).toBeGreaterThan(10);
  }
 });
+test('mobile: gráfico de jornadas usa escala legível e não invade a largura',async ({page})=>{
+ await page.setViewportSize({width:390,height:844});
+ await page.goto('/cases/omnichannel-performance/',{waitUntil:'domcontentloaded'});
+ const graph=page.locator('#csChart');
+ await graph.scrollIntoViewIfNeeded();
+ await expect(graph).toHaveAttribute('viewBox','0 0 360 232');
+ await expect(graph.locator('text')).toHaveCount(12);
+ const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:document.documentElement.clientWidth}));
+ expect(dimensions.scroll).toBeLessThanOrEqual(dimensions.view+2);
+ await page.screenshot({path:'screenshots/mobile-audit/case-grafico-390.png'});
+ await page.setViewportSize({width:1024,height:850});
+ await expect(graph).toHaveAttribute('viewBox','0 0 760 232');
+});
+
 test('mobile: trajetória da home até o dashboard do case e aba técnica',async ({page})=>{
  await page.setViewportSize({width:390,height:844});
  await page.goto('/',{waitUntil:'domcontentloaded'});
