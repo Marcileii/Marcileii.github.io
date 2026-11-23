@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import fs from 'node:fs';
+fs.mkdirSync('screenshots',{recursive:true});
 
 const path = '/cases/omnichannel-performance/';
 
