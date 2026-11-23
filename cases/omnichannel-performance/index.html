@@ -14,6 +14,7 @@
 .cs-hero h1{max-width:1100px;font:400 clamp(54px,7.2vw,105px)/.89 Georgia,serif;letter-spacing:-.065em}
 .cs-hero h1 em{color:var(--accent)}
 .cs-subtitle{max-width:830px;margin:28px 0 0;font-size:clamp(19px,2.2vw,26px);line-height:1.4}
+.cs-quick-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:25px 0 0}.cs-quick-links>span{color:var(--muted);font-size:12px}.cs-quick-link{display:inline-flex;align-items:center;justify-content:center;gap:15px;min-height:48px;padding:0 19px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:99px;text-decoration:none;font-size:13px;font-weight:800;transition:background .16s ease,color .16s ease}.cs-quick-link:hover{background:var(--accent);color:white;border-color:var(--accent)}.cs-quick-link:focus-visible{outline:3px solid var(--accent);outline-offset:4px}#csDemo{scroll-margin-top:158px}
 .cs-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:36px}
 .cs-summary>div{padding-top:12px;border-top:1px solid var(--ink)}
 .cs-summary span{display:block;color:var(--muted);font:800 11px "Courier New",monospace;text-transform:uppercase}
@@ -106,7 +107,7 @@
 .cs-links a{padding:11px 15px;border:1px solid var(--ink);border-radius:99px;text-decoration:none;font-weight:800;font-size:12px}
 .cs-links a:hover{background:var(--ink);color:white}
 @media(max-width:1080px){.cs-demo-kpis{grid-template-columns:repeat(3,1fr)}.cs-data-panels{grid-template-columns:1fr}.cs-architecture{grid-template-columns:repeat(3,1fr)}.cs-node:nth-child(3):after{display:none}}
-@media(max-width:720px){.cs-hero{padding-top:40px}.cs-hero h1{font-size:clamp(49px,10vw,72px)}.cs-subtitle{font-size:19px}.cs-summary{grid-template-columns:1fr;gap:16px}.cs-tabs-wrap{top:58px}.cs-tab{padding:12px 13px;font-size:12px}.cs-demo-inner{padding:12px}.cs-filters{grid-template-columns:1fr}.cs-demo-head{padding:15px}.cs-demo-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-data-card{padding:11px}.cs-takeaways{grid-template-columns:1fr}.cs-why{grid-template-columns:1fr;gap:10px}.cs-architecture{grid-template-columns:1fr}.cs-node{min-height:auto}.cs-node:after{content:"↓";top:auto;bottom:-16px;left:50%;right:auto;transform:translateX(-50%)}.cs-node:nth-child(3):after{display:block}.cs-tech-split{grid-template-columns:1fr}.cs-stage{padding:25px 0 40px}}
+@media(max-width:720px){#csDemo{scroll-margin-top:130px}.cs-quick-links{align-items:flex-start;flex-direction:column;gap:9px}.cs-hero{padding-top:40px}.cs-hero h1{font-size:clamp(49px,10vw,72px)}.cs-subtitle{font-size:19px}.cs-summary{grid-template-columns:1fr;gap:16px}.cs-tabs-wrap{top:58px}.cs-tab{padding:12px 13px;font-size:12px}.cs-demo-inner{padding:12px}.cs-filters{grid-template-columns:1fr}.cs-demo-head{padding:15px}.cs-demo-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-data-card{padding:11px}.cs-takeaways{grid-template-columns:1fr}.cs-why{grid-template-columns:1fr;gap:10px}.cs-architecture{grid-template-columns:1fr}.cs-node{min-height:auto}.cs-node:after{content:"↓";top:auto;bottom:-16px;left:50%;right:auto;transform:translateX(-50%)}.cs-node:nth-child(3):after{display:block}.cs-tech-split{grid-template-columns:1fr}.cs-stage{padding:25px 0 40px}}
 @media(prefers-reduced-motion:reduce){.cs-stage *, .cs-stage *:before,.cs-stage *:after{scroll-behavior:auto;transition:none}}
 
 .eng-wrap{border-top:1px solid var(--line);padding:70px 0 86px}
@@ -150,6 +151,7 @@
 <div class="cs-eyebrow">Case de CRM · SFMC · dados demonstrativos</div>
 <h1>Dashboard de <em>Resultados</em> por Jornada.</h1>
 <p class="cs-subtitle">Como reuni envios, aberturas, cliques e indicadores de jornadas de CRM em uma experiência de análise construída dentro do Salesforce Marketing Cloud.</p>
+<div class="cs-quick-links"><a href="#csDemo" class="cs-quick-link">Testar dashboard <span aria-hidden="true">↓</span></a><span>Experiência interativa com dados fictícios</span></div>
 <div class="cs-summary">
 <div><span>Meu papel</span><strong>Arquitetura · processamento · interface</strong></div>
 <div><span>Tecnologias</span><strong>SQL · Automation Studio · SSJS · WSProxy · HTML/JS</strong></div>
