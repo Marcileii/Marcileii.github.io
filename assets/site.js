@@ -2,7 +2,7 @@ document.documentElement.classList.add('js');
 
 const mobileCss=document.createElement('link');
 mobileCss.rel='stylesheet';
-mobileCss.href='/assets/mobile.css?v=2';
+mobileCss.href='/assets/mobile.css?v=3';
 document.head.appendChild(mobileCss);
 
 const mobilePreviewCss=document.createElement('link');
