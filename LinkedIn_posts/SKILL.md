@@ -23,13 +23,13 @@ Ao responder comentários: 1 resposta pronta para copiar por pessoa ainda penden
 
 1. Ler `README.md`, **este arquivo**, `PUBLICACOES.md`, `IDEIAS_E_CASES.md` e `GUIA_INTERACOES_E_EVOLUCAO.md` diretamente da branch principal do repositório. Se os arquivos não estiverem acessíveis, comunicar o limite e solicitar o conteúdo ou o acesso, sem fingir que verificou o histórico.
 2. Ler o pedido do usuário: terça, quinta, variação ou resposta a comentários.
-3. Identificar posts `PUBLICADO` e `RASCUNHO`. Não repetir mesmo assunto/gancho/case/ângulo; preferir um tema novo ou claramente complementar.
+3. Identificar posts `PUBLICADO`, `AGENDADO` e `RASCUNHO`. Não repetir mesmo assunto/gancho/case/ângulo; preferir um tema novo ou claramente complementar.
 4. Para terça: partir apenas de experiências confirmadas, e não inventar incidentes pessoais. Se os detalhes não estiverem confirmados, usar abertura impessoal ou pedir 1 detalhe necessário.
 5. Para quinta: consultar o GitHub/README/case/arquivos públicos *atuais* do projeto escolhido. Se for privado, não copiar material e não compartilhar link privado; preferir case público anonimizado. Conferir que a solução não foi divulgada antes.
 6. Escrever uma publicação que soe humana e própria, com um gancho específico, contexto compreensível, lição prática e CTA natural de conversa.
 7. Revisar: veracidade técnica; sigilo; projeto/case real versus demo/protótipo; gancho não repetido; nenhuma estatística inventada; pertinência para a comunidade SFMC.
-8. Entregar uma publicação pronta para copiar e 1 nota curta sobre a escolha do tema. Marcar como **RASCUNHO**. Caso a conexão GitHub tenha permissão de escrita e o usuário tenha autorizado o fluxo de registro, registrar/atualizar `PUBLICACOES.md` preservando as linhas existentes. Se não puder, fornecer a linha de registro pendente para uso posterior.
-9. **Só trocar o status para PUBLICADO após confirmação explícita do autor.** Nunca postar automaticamente no LinkedIn ou atualizar dados de outros projetos sem pedido.
+8. Entregar uma publicação pronta para copiar e 1 nota curta sobre a escolha do tema. Marcar como **RASCUNHO**; se o autor confirmar agendamento, marcar **AGENDADO** com data/hora, sem confundir com publicação. Caso a conexão GitHub tenha permissão de escrita e o usuário tenha autorizado o fluxo de registro, registrar/atualizar `PUBLICACOES.md` preservando as linhas existentes. Se não puder, fornecer a linha de registro pendente para uso posterior.
+9. **Só trocar o status para PUBLICADO após confirmação explícita de que o post efetivamente foi ao ar.** Nunca postar automaticamente no LinkedIn ou atualizar dados de outros projetos sem pedido.
 
 ## Terças — posts de NETWORKING
 
@@ -55,7 +55,7 @@ Temas só podem ser reutilizados quando o novo ângulo for explicitamente difere
 ## Quintas — posts de SOLUÇÃO / PROJETO
 
 Usar GitHub: https://github.com/Marcileii  
-Portfólio: https://marcileii.github.io/  
+Portfólio: https://marcilei.com.br/  
 Repositório do portfólio: https://github.com/Marcileii/Marcileii.github.io
 
 Estrutura sugerida:
@@ -108,4 +108,4 @@ Não gerar simultaneamente múltiplas versões sem pedido; oferecer alternativa 
 
 ## Integridade de registros
 
-O arquivo canônico é `PUBLICACOES.md`. Registre eventos, sem substituir histórico anterior ou sobrescrever mudanças concorrentes. Ler a versão e SHA mais recentes antes de atualizar; evitar commits paralelos no mesmo arquivo. Em caso de conflito, reabrir, reconciliar e pedir confirmação se houver dúvida. Sem GitHub write, explicar claramente a limitação. Rascunhos apenas sugeridos em conversas antigas são repertório, não publicações confirmadas.
+O arquivo canônico é `PUBLICACOES.md`. Registre eventos, sem substituir histórico anterior ou sobrescrever mudanças concorrentes. Ler a versão e SHA mais recentes antes de atualizar; evitar commits paralelos no mesmo arquivo. Em caso de conflito, reabrir, reconciliar e pedir confirmação se houver dúvida. Sem GitHub write, explicar claramente a limitação. Rascunhos e agendamentos são repertório, não publicações confirmadas. Verificar a data/hora do agendamento e só marcar `PUBLICADO` após evidência ou confirmação de que foi ao ar.
