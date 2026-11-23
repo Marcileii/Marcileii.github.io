@@ -1,1 +1,287 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Case anonimizado de dashboard multicanal para CRM."><title>Omnichannel Performance Hub — Case · Marcilei Brandão</title><link rel="stylesheet" href="/assets/site.css"></head><body><header class="top"><div class="wrap topin"><a class="name" href="/">Marcilei Brandão</a><nav class="nav"><a href="/#work">Trabalhos</a><a href="/#about">Sobre</a><a href="/contratar/">Contratar</a></nav><div class="availability mono"><i></i><span>Case anonimizado</span></div></div></header><main><section class="case-page-hero"><div class="wrap"><a class="back mono" href="/#work">← Voltar aos trabalhos</a><div class="mono">CRM · observabilidade · dados</div><h1>Omnichannel<br><em>Performance Hub.</em></h1><div class="case-page-lead"><p>Uma operação de CRM multicanal precisa responder rapidamente perguntas simples: qual jornada enviou, por qual canal, quando, quanto e onde existe comportamento fora do esperado? O desafio foi reunir essa leitura em uma interface única.</p><div class="case-page-meta"><div class="meta-card"><span class="mono">Papel</span><strong>Arquitetura, lógica e UI</strong></div><div class="meta-card"><span class="mono">Stack</span><strong>SFMC · SSJS · JS · SQL</strong></div><div class="meta-card"><span class="mono">Privacidade</span><strong>Case totalmente anonimizado</strong></div></div></div></div></section><section class="section"><div class="wrap case-body"><aside class="case-nav"><a href="#problema">Problema</a><a href="#solucao">Solução</a><a href="#impacto">Impacto</a><a href="#arquitetura">Arquitetura</a><a href="#produto">Experiência</a><a href="#seguranca">Confidencialidade</a></aside><div class="prose"><div class="prose-section" id="problema"><div class="mono">01 / Problema</div><h2>Muitos canais. Pouca visão consolidada.</h2><p>Email, SMS, Push e WhatsApp têm comportamentos e métricas diferentes. Quando a leitura depende de consultas isoladas ou relatórios separados, investigar uma jornada vira um trabalho operacional.</p><p>O objetivo do hub foi reduzir essa fragmentação e criar um ponto único para leitura diária da operação.</p></div><div class="prose-section" id="solucao"><div class="mono">02 / Solução</div><h2>Um painel pensado para investigar, não só exibir.</h2><ul><li>Busca e filtro por jornada.</li><li>Filtro por data e canal.</li><li>Visão consolidada de envios por Email, SMS, Push e WhatsApp.</li><li>Indicadores de atenção para facilitar investigação.</li><li>Histórico e leitura de evolução.</li><li>Exportação para análise fora do painel.</li><li>Suporte a modos claro e escuro.</li></ul></div><div class="prose-section" id="impacto"><div class="mono">03 / O que mudou</div><h2>Da consulta fragmentada para uma rotina de acompanhamento.</h2><p>Com a informação reunida em uma mesma experiência, a operação passa a ter um ponto de partida claro para investigar jornadas e canais. Em vez de reconstruir o contexto a cada análise, filtros, histórico e consolidação ficam disponíveis no mesmo fluxo.</p><ul><li>Quatro canais podem ser lidos no mesmo painel.</li><li>Canais sem envio continuam visíveis, evitando uma leitura incompleta.</li><li>A exportação permite continuar análises específicas fora da interface.</li><li>A busca por jornada reduz a necessidade de navegar por consultas isoladas.</li></ul><div class="note">Não publico números de negócio ou métricas internas do cliente. O impacto descrito aqui é funcional e corresponde ao que a solução passou a permitir na operação.</div></div><div class="prose-section" id="arquitetura"><div class="mono">04 / Arquitetura</div><h2>A interface é só a última camada.</h2><div class="architecture"><div class="arch-box"><span class="mono">Origem</span><strong>CRM Data</strong></div><div class="arch-box"><span class="mono">Consulta</span><strong>SQL / DEs</strong></div><div class="arch-box"><span class="mono">Servidor</span><strong>SSJS</strong></div><div class="arch-box"><span class="mono">Interface</span><strong>HTML + JS</strong></div></div><p>O painel foi estruturado para receber dados consolidados da operação e transformar esse volume em uma leitura rápida. A separação entre fonte, processamento e interface facilita manutenção e evolução.</p></div><div class="prose-section" id="produto"><div class="mono">05 / Experiência</div><h2>O importante era reduzir fricção de investigação.</h2><h3>Filtros antes de gráfico bonito</h3><p>Busca, jornada, data e canal precisam ser fáceis de combinar. A prioridade foi permitir que alguém chegasse rapidamente ao recorte certo.</p><h3>Canais zerados continuam visíveis</h3><p>Ausência de envio também é informação. Por isso a experiência evita esconder automaticamente um canal só porque o valor do período é zero.</p><h3>Interface para operação real</h3><p>Estados de carregamento, mensagens de erro e histórico fazem parte do produto; não são detalhes decorativos.</p></div><div class="prose-section" id="seguranca"><div class="mono">06 / Confidencialidade</div><h2>O case mostra capacidade sem expor cliente.</h2><p>Nomes de clientes, URLs, estruturas internas, identificadores de base, código proprietário, dados e credenciais não são publicados. O material apresentado aqui é uma reconstrução conceitual do problema e da solução.</p><div class="note">Esse é o padrão que uso para mostrar trabalho corporativo: preservar confidencialidade e, ao mesmo tempo, explicar raciocínio técnico e responsabilidade na entrega.</div><div class="case-links"><a class="pill dark" href="/contratar/">Quero um dashboard parecido →</a></div></div></div></div></section></main><footer><div class="wrap foot"><span>Marcilei Brandão · 2026</span><div class="foot-links"><a href="/">Portfólio</a><a href="/contratar/">Contratar</a></div></div></footer><script src="/assets/site.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Case técnico anonimizado: dashboard de resultados por jornada criado no Salesforce Marketing Cloud com CloudPages, SQL, SSJS e WSProxy. Explore uma demonstração com dados fictícios e a arquitetura de duas CloudPages.">
+<meta name="theme-color" content="#f3f0e8">
+<title>Dashboard de Resultados por Jornada — Case | Marcilei Brandão</title>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* Case isolado: não altera o estilo global do portfólio */
+.cs-hero{padding:70px 0 38px;border-bottom:1px solid var(--line)}
+.cs-eyebrow{display:inline-flex;align-items:center;gap:10px;margin:26px 0 18px;padding:8px 11px;background:var(--green);color:#151812;border:1px solid var(--ink);font:800 11px/1.2 "Courier New",monospace;text-transform:uppercase;letter-spacing:.05em}
+.cs-hero h1{max-width:1100px;font:400 clamp(54px,7.2vw,105px)/.89 Georgia,serif;letter-spacing:-.065em}
+.cs-hero h1 em{color:var(--accent)}
+.cs-subtitle{max-width:830px;margin:28px 0 0;font-size:clamp(19px,2.2vw,26px);line-height:1.4}
+.cs-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:36px}
+.cs-summary>div{padding-top:12px;border-top:1px solid var(--ink)}
+.cs-summary span{display:block;color:var(--muted);font:800 11px "Courier New",monospace;text-transform:uppercase}
+.cs-summary strong{display:block;margin-top:7px;font-size:14px}
+.cs-intro{max-width:810px;padding:35px 0 14px;font-size:17px;line-height:1.65}
+.cs-tabs-wrap{position:sticky;top:68px;z-index:20;padding:9px 0;background:rgba(243,240,232,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.cs-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.cs-tab{padding:13px 19px;border:1px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font:800 13px Arial,sans-serif;cursor:pointer}
+.cs-tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.cs-tab:focus-visible,.cs-demo select:focus-visible,.cs-action:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.cs-panel[hidden]{display:none!important}
+.cs-stage{padding:36px 0 54px}
+.cs-sectionhead{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap;margin-bottom:22px}
+.cs-sectionhead h2{margin:5px 0 0;font:400 clamp(36px,4.8vw,62px)/.97 Georgia,serif;letter-spacing:-.05em}
+.cs-sectionhead p{max-width:490px;margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.cs-index{font:800 11px "Courier New",monospace;text-transform:uppercase;letter-spacing:.06em;color:#df410f}
+.cs-demo{border:1px solid #090b0f;border-radius:18px;background:#111317;color:#f5f7fc;overflow:hidden;box-shadow:0 25px 50px rgba(0,0,0,.18);font-family:Arial,Helvetica,sans-serif}
+.cs-demo-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;padding:18px 24px;border-bottom:1px solid #32343a;background:#191b20}
+.cs-demo-brand{display:flex;align-items:center;gap:12px}
+.cs-demo-logo{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#ff5e33,#b52e18);font-size:21px;font-weight:900}
+.cs-demo-brand strong{display:block;font-size:18px}
+.cs-demo-brand small,.cs-demo-muted{display:block;color:#aeb4bf;font-size:11px;margin-top:4px}
+.cs-demo-flag{padding:8px 10px;border:1px solid #65734b;border-radius:99px;background:#c7ff4a12;color:#d7ffa0;font:700 10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.05em}
+.cs-demo-inner{padding:20px}
+.cs-filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;padding:15px;border:1px solid #35383f;border-radius:12px;background:#1a1d23;margin-bottom:16px}
+.cs-filters label{display:grid;gap:6px;font-size:11px;font-weight:800;color:#c4c8d2}
+.cs-filters select{width:100%;min-width:0;min-height:42px;padding:8px 11px;border:1px solid #555b64;border-radius:8px;background:#262a32;color:#fff;font-size:13px}
+.cs-demo-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.cs-demo-kpi{padding:17px 12px 14px;border:1px solid #393d47;border-top:3px solid var(--mark,#f15b39);border-radius:10px;background:#1b1e24;min-width:0}
+.cs-demo-kpi span{display:block;color:#b6beca;font-size:12px}
+.cs-demo-kpi strong{display:block;margin:12px 0 5px;font-size:clamp(18px,2.2vw,30px);letter-spacing:-.04em;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.cs-demo-kpi small{color:#a7aeb8;font-size:10px}
+.cs-data-panels{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}
+.cs-data-card{padding:16px;border:1px solid #3a3e46;border-radius:12px;background:#1a1d23;min-width:0}
+.cs-data-card h3{margin:0;font-size:16px}
+.cs-data-card>p{color:#9ea7b4;margin:5px 0 15px;font-size:11px}
+.cs-chart{display:block;width:100%;height:auto;min-height:185px;border:1px solid #343842;border-radius:8px;background:#13161a}
+.cs-legend{display:flex;flex-wrap:wrap;gap:11px;margin-top:11px}
+.cs-legend span{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#dadfe6}
+.cs-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.cs-table-scroll{overflow-x:auto}
+.cs-table{width:100%;border-collapse:collapse;font-size:12px;text-align:right;font-variant-numeric:tabular-nums}
+.cs-table th,.cs-table td{padding:11px 8px;border-bottom:1px solid #343842;white-space:nowrap}
+.cs-table th{background:#262b33;color:#d2d6df;font-size:10px;text-transform:uppercase}
+.cs-table th:first-child,.cs-table td:first-child{text-align:left}
+.cs-table tbody tr:last-child td{border-bottom:0}
+.cs-metric-tip{margin:12px 0 0;color:#aeb5bf;font-size:10px;line-height:1.5}
+.cs-demo-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:13px;padding:14px 20px;background:#16181d;border-top:1px solid #343842}
+.cs-demo-bottom p{margin:0;color:#c5ccd5;font-size:11px}
+.cs-action{padding:9px 13px;border:1px solid #505862;border-radius:8px;background:#2a3038;color:white;font:700 11px Arial,sans-serif;cursor:pointer}
+.cs-action:hover{background:#434c59}
+.cs-takeaways{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 0}
+.cs-takeaway{padding:19px;border:1px solid var(--line);background:var(--white)}
+.cs-takeaway span{font:800 11px "Courier New",monospace;color:var(--accent)}
+.cs-takeaway strong{display:block;margin:16px 0 7px;font:400 27px/1.08 Georgia,serif}
+.cs-takeaway p{margin:0;font-size:13px;line-height:1.6;color:var(--muted)}
+.cs-separator{margin:54px 0 40px;border:0;border-top:1px solid var(--line)}
+.cs-why{display:grid;grid-template-columns:.6fr 1fr;gap:36px;align-items:start}
+.cs-why h2{font:400 clamp(36px,4vw,57px)/1 Georgia,serif;letter-spacing:-.05em;margin:0}
+.cs-why p{max-width:660px;margin:0 0 18px;color:var(--muted);font-size:16px;line-height:1.75}
+.cs-architecture{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:25px 0 16px}
+.cs-node{position:relative;min-height:165px;padding:16px 13px;border:1px solid var(--ink);background:var(--white)}
+.cs-node:nth-child(4),.cs-node:nth-child(5){background:#16191d;color:white;border-color:#393d47}
+.cs-node:after{position:absolute;content:"→";right:-10px;top:45%;z-index:1;color:var(--accent);font-weight:bold;font-size:18px;background:var(--paper);line-height:1}
+.cs-node:last-child:after{display:none}
+.cs-node small{display:block;margin-bottom:15px;color:#b63a15;font:800 10px "Courier New",monospace;text-transform:uppercase}
+.cs-node:nth-child(n+4) small{color:#d0ff8b}
+.cs-node strong{display:block;font:400 22px/1.1 Georgia,serif}
+.cs-node p{margin:11px 0 0;font-size:11px;line-height:1.55;color:var(--muted)}
+.cs-node:nth-child(n+4) p{color:#bdc4cd}
+.cs-tech-split{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:22px 0}
+.cs-cloud{padding:23px;border:1px solid var(--ink);background:var(--white)}
+.cs-cloud.alt{background:#171a1f;color:white;border-color:#171a1f}
+.cs-cloud-tag{display:inline-block;padding:6px 8px;background:var(--green);color:#161a12;font:800 10px "Courier New",monospace}
+.cs-cloud h3{margin:18px 0 7px;font:400 30px/1 Georgia,serif}
+.cs-cloud p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.cs-cloud.alt p{color:#bbc3cd}
+.cs-mock-json{margin-top:16px;border:1px solid #343842;border-radius:8px;padding:15px;color:#e6eedf;background:#101317;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 "Courier New",monospace}
+.cs-ui-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:15px}
+.cs-ui-preview div{padding:14px 8px;text-align:center;border:1px solid #3c444d;border-radius:6px;color:#c7ff4a;font:800 12px Arial,sans-serif}
+.cs-detail{border-top:1px solid var(--line);padding:21px 0}
+.cs-detail:last-of-type{border-bottom:1px solid var(--line)}
+.cs-detail summary{display:flex;justify-content:space-between;gap:20px;cursor:pointer;list-style:none;font:400 clamp(20px,2.5vw,30px)/1.15 Georgia,serif}
+.cs-detail summary::-webkit-details-marker{display:none}
+.cs-detail summary:after{content:"+";font:700 26px Arial,sans-serif;color:var(--accent)}
+.cs-detail[open] summary:after{content:"−"}
+.cs-detail p{max-width:850px;margin:15px 0 0;color:var(--muted);font-size:14px;line-height:1.7}
+.cs-footer-note{max-width:900px;margin:35px 0 0;padding:17px 18px;border-left:4px solid var(--accent);background:#ece7dc;color:#514b43;font-size:13px;line-height:1.65}
+.cs-links{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 20px}
+.cs-links a{padding:11px 15px;border:1px solid var(--ink);border-radius:99px;text-decoration:none;font-weight:800;font-size:12px}
+.cs-links a:hover{background:var(--ink);color:white}
+@media(max-width:1080px){.cs-demo-kpis{grid-template-columns:repeat(3,1fr)}.cs-data-panels{grid-template-columns:1fr}.cs-architecture{grid-template-columns:repeat(3,1fr)}.cs-node:nth-child(3):after{display:none}}
+@media(max-width:720px){.cs-hero{padding-top:40px}.cs-hero h1{font-size:clamp(49px,10vw,72px)}.cs-subtitle{font-size:19px}.cs-summary{grid-template-columns:1fr;gap:16px}.cs-tabs-wrap{top:58px}.cs-tab{padding:12px 13px;font-size:12px}.cs-demo-inner{padding:12px}.cs-filters{grid-template-columns:1fr}.cs-demo-head{padding:15px}.cs-demo-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-data-card{padding:11px}.cs-takeaways{grid-template-columns:1fr}.cs-why{grid-template-columns:1fr;gap:10px}.cs-architecture{grid-template-columns:1fr}.cs-node{min-height:auto}.cs-node:after{content:"↓";top:auto;bottom:-16px;left:50%;right:auto;transform:translateX(-50%)}.cs-node:nth-child(3):after{display:block}.cs-tech-split{grid-template-columns:1fr}.cs-stage{padding:25px 0 40px}}
+@media(prefers-reduced-motion:reduce){.cs-stage *, .cs-stage *:before,.cs-stage *:after{scroll-behavior:auto;transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap topin"><a class="name" href="/">Marcilei Brandão</a><nav class="nav" aria-label="Navegação"><a href="/#work">Trabalhos</a><a href="/#about">Sobre</a><a href="/contratar/">Contato</a></nav><div class="availability mono"><i></i><span>Case técnico</span></div></div></header>
+<main>
+<section class="cs-hero"><div class="wrap">
+<a class="back mono" href="/#work">← Voltar aos projetos</a>
+<div class="cs-eyebrow">Case de CRM · SFMC · dados demonstrativos</div>
+<h1>Dashboard de <em>Resultados</em> por Jornada.</h1>
+<p class="cs-subtitle">Como reuni envios, aberturas, cliques e indicadores de jornadas de CRM em uma experiência de análise construída dentro do Salesforce Marketing Cloud.</p>
+<div class="cs-summary">
+<div><span>Meu papel</span><strong>Arquitetura · processamento · interface</strong></div>
+<div><span>Tecnologias</span><strong>SQL · Automation Studio · SSJS · WSProxy · HTML/JS</strong></div>
+<div><span>Apresentação</span><strong>Reconstrução anonimizada, sem dados de cliente</strong></div>
+</div>
+<p class="cs-intro">O desafio não era apenas saber quantos disparos aconteceram. Era selecionar uma jornada e entender sua evolução, canal por canal, sem reconstruir a análise em consultas e relatórios separados. Abaixo está uma <strong>demonstração independente</strong>, inspirada nas funcionalidades da solução, com números totalmente fictícios.</p>
+</div></section>
+<div class="cs-tabs-wrap"><div class="wrap cs-tabs" role="tablist" aria-label="Visões deste case">
+<button class="cs-tab" type="button" role="tab" id="csTabOverview" aria-controls="csPanelOverview" aria-selected="true" tabindex="0">01 / Ver o dashboard</button>
+<button class="cs-tab" type="button" role="tab" id="csTabTech" aria-controls="csPanelTech" aria-selected="false" tabindex="-1">02 / Por dentro da arquitetura</button>
+</div></div>
+<div class="wrap cs-stage">
+<section id="csPanelOverview" class="cs-panel" role="tabpanel" aria-labelledby="csTabOverview">
+<div class="cs-sectionhead"><div><span class="cs-index">01 / Explorar o resultado</span><h2>Mais que um print: experimente.</h2></div><p>Troque a jornada, o canal e o período. Os números mudam para ilustrar os fluxos de análise. Não há conexão com o Marketing Cloud.</p></div>
+<div class="cs-demo" id="csDemo">
+<div class="cs-demo-head"><div class="cs-demo-brand"><div class="cs-demo-logo" aria-hidden="true">▥</div><div><strong>Dashboard Multicanal</strong><small>Resultados de jornadas · Portugal (case anonimizado)</small></div></div><span class="cs-demo-flag">Demonstração · dados fictícios</span></div>
+<div class="cs-demo-inner">
+<form class="cs-filters" id="csFilters">
+<label>Jornada<select id="csJourney"><option value="welcome">Boas-vindas — Demo</option><option value="cart">Recuperação de carrinho — Demo</option><option value="after">Pós-compra — Demo</option></select></label>
+<label>Canal<select id="csChannel"><option value="all">Todos os canais</option><option value="email">E-mail</option><option value="sms">SMS</option><option value="push">Push</option><option value="whatsapp">WhatsApp</option></select></label>
+<label>Período<select id="csPeriod"><option value="30">Últimos 30 dias</option><option value="7">Últimos 7 dias</option><option value="90">Últimos 90 dias</option></select></label>
+</form>
+<div class="cs-demo-kpis">
+<div class="cs-demo-kpi" style="--mark:#ff6639"><span>Envios no período</span><strong id="csTotal">—</strong><small>Volume consolidado</small></div>
+<div class="cs-demo-kpi" style="--mark:#ff6639"><span>E-mail</span><strong id="csEmail">—</strong><small>Envios</small></div>
+<div class="cs-demo-kpi" style="--mark:#58b1ff"><span>SMS</span><strong id="csSms">—</strong><small>Envios</small></div>
+<div class="cs-demo-kpi" style="--mark:#bc8aff"><span>Push</span><strong id="csPush">—</strong><small>Envios</small></div>
+<div class="cs-demo-kpi" style="--mark:#5bdd8a"><span>WhatsApp</span><strong id="csWhats">—</strong><small>Envios</small></div>
+</div>
+<div class="cs-data-panels">
+<div class="cs-data-card"><h3>Evolução por canal</h3><p id="csChartDescription">Envios ao longo do período selecionado</p><svg class="cs-chart" id="csChart" role="img" aria-label="Gráfico demonstrativo de evolução dos envios" viewBox="0 0 760 232" preserveAspectRatio="xMidYMid meet"></svg><div class="cs-legend" id="csLegend"></div></div>
+<div class="cs-data-card"><h3>Indicadores por canal</h3><p>Envios, aberturas, cliques, OR e CTR — quando aplicáveis</p><div class="cs-table-scroll"><table class="cs-table"><thead><tr><th>Canal</th><th>Envios</th><th>Ab.</th><th>Cl.</th><th>OR</th><th>CTR</th></tr></thead><tbody id="csStats"></tbody></table></div><p class="cs-metric-tip">OR = aberturas / envios; CTR = cliques / entregas estimadas. Métricas indisponíveis aparecem como N/A. Todos os valores são simulados.</p></div>
+</div></div>
+<div class="cs-demo-bottom"><p>Sem dados reais, credenciais, APIs ou consultas ao cliente.</p><button type="button" id="csExport" class="cs-action">Exportar CSV fictício ↗</button></div>
+</div>
+<div class="cs-takeaways"><div class="cs-takeaway"><span>01 / Recorte</span><strong>Uma jornada por vez</strong><p>Busca pelo nome da jornada, filtro por canal e escolha de período para investigar o contexto certo.</p></div><div class="cs-takeaway"><span>02 / Leitura</span><strong>Volume e reação</strong><p>Além de envios, a interface apresenta engajamento quando o canal e a origem oferecem essas métricas.</p></div><div class="cs-takeaway"><span>03 / Operação</span><strong>Visualização e análise</strong><p>Indicadores, evolução temporal e exportação ajudam a investigar os resultados sem depender só de consultas isoladas.</p></div></div>
+<hr class="cs-separator">
+<div class="cs-why"><div><span class="cs-index">02 / Contexto</span><h2>O problema que motivou o projeto.</h2></div><div><p>Uma operação multicanal gera informações em formatos e fontes diferentes. Comparar uma jornada de e-mail com uma de push, por exemplo, exige entender quais eventos existem em cada canal e em que período aconteceram.</p><p>O caminho foi consolidar os dados necessários e construir uma interface focada na análise diária de jornadas. O painel não substitui toda a camada de BI: ele resolve uma necessidade operacional específica, próxima dos dados do CRM.</p></div></div>
+<div class="cs-links"><a href="#csTabTech" id="csExploreTech">Explorar decisões técnicas →</a><a href="/#work">Voltar aos projetos</a></div>
+</section>
+<section id="csPanelTech" class="cs-panel" role="tabpanel" aria-labelledby="csTabTech" hidden>
+<div class="cs-sectionhead"><div><span class="cs-index">02 / Bastidores técnicos</span><h2>Duas CloudPages. Uma experiência.</h2></div><p>Uma visão de arquitetura suficiente para mostrar as escolhas, sem publicar código proprietário ou estruturas de dados do cliente.</p></div>
+<div class="cs-architecture" aria-label="Fluxo conceitual da solução">
+<div class="cs-node"><small>01 / Origem</small><strong>Data Views e relatórios</strong><p>Eventos de campanhas, journeys e canais disponíveis no ecossistema do CRM.</p></div>
+<div class="cs-node"><small>02 / Tratamento</small><strong>SQL + automações</strong><p>Tratamento de registros, agregações e atualização recorrente.</p></div>
+<div class="cs-node"><small>03 / Base</small><strong>Data Extensions</strong><p>Dados estruturados por jornada, canal e período.</p></div>
+<div class="cs-node"><small>04 / Backend</small><strong>CloudPage AJAX</strong><p>SSJS + WSProxy para consulta e resposta estruturada.</p></div>
+<div class="cs-node"><small>05 / Interface</small><strong>CloudPage HTML</strong><p>Filtros, gráficos, indicadores e exportação em JavaScript.</p></div>
+</div>
+<div class="cs-tech-split">
+<div class="cs-cloud"><span class="cs-cloud-tag">CLOUDPAGE 01 · DADOS</span><h3>O lado que responde.</h3><p>Uma CloudPage atua como endpoint. O SSJS executa a consulta com WSProxy, trabalha com as respostas e devolve dados em formato JSON. Assim, a interface não precisa conter a lógica de acesso.</p>
+<pre class="cs-mock-json" aria-label="Exemplo fictício de resposta JSON">{
+  "jornada": "Boas-vindas — Demo",
+  "canal": "email",
+  "periodo": "30 dias",
+  "envios": 12480,
+  "aberturas": 4493,
+  "cliques": 562
+}</pre>
+</div>
+<div class="cs-cloud alt"><span class="cs-cloud-tag">CLOUDPAGE 02 · EXPERIÊNCIA</span><h3>O lado que mostra.</h3><p>A segunda CloudPage oferece filtros de jornada, canal e período, consome a resposta JSON e transforma os dados em KPIs, séries temporais e análises visuais.</p>
+<div class="cs-ui-preview"><div>Jornada</div><div>Período</div><div>Canal</div><div>KPIs</div><div>Gráficos</div><div>Exportação</div></div>
+</div></div>
+<details class="cs-detail" open><summary>Por que separar em duas CloudPages?</summary><p>A separação deixa a consulta e a apresentação com responsabilidades diferentes. A camada AJAX entrega uma resposta estruturada; a camada HTML se concentra em filtros, estados de carregamento, indicadores e experiência do usuário. Essa escolha facilita testar e evoluir cada parte sem misturar tudo numa única página.</p></details>
+<details class="cs-detail"><summary>Como os dados chegavam ao painel?</summary><p>Fontes e relatórios do Marketing Cloud alimentavam o tratamento por SQL e automações. Os resultados eram organizados em Data Extensions. A CloudPage AJAX buscava esses registros via SSJS/WSProxy, e a página de interface transformava a resposta em indicadores. É uma visão conceitual do fluxo, sem expor nomes de bases nem parâmetros internos.</p></details>
+<details class="cs-detail"><summary>Por que CloudPages em vez de Looker Studio ou Power BI?</summary><p>Não é uma comparação de superioridade. Neste caso, a necessidade era construir um painel operacional diretamente próximo aos dados e aos fluxos do SFMC, com uma experiência bastante específica por jornada. Uma ferramenta de BI continua sendo uma alternativa mais indicada para cenários corporativos de governança, cruzamento de múltiplas fontes ou análises em maior escala.</p></details>
+<details class="cs-detail"><summary>Quais foram os cuidados com as métricas?</summary><p>Aberturas, cliques e taxas não são equivalentes entre canais. Por exemplo, uma abertura de e-mail e uma interação de push não têm a mesma definição. Por isso o painel distingue indicadores disponíveis e não aplicáveis, além de manter as leituras de volume e de engajamento separadas. A demo acima simplifica o cálculo para fins ilustrativos.</p></details>
+<div class="cs-footer-note"><strong>Sobre esta reconstrução:</strong> a experiência acima usa apenas números e nomes de jornadas fictícios. A arquitetura foi simplificada para fins educacionais. Nenhum código, URL de CloudPage, credencial, identificador de Data Extension ou dado real de cliente foi incluído.</div>
+<div class="cs-links"><a href="#csTabOverview" id="csBackDemo">Voltar à demonstração →</a><a href="/#work">Mais projetos</a></div>
+</section>
+</div></main>
+<footer><div class="wrap foot"><span>Marcilei Brandão · 2026 · Case demonstrativo</span><div class="foot-links"><a href="/">Portfólio</a><a href="/#work">Projetos</a></div></div></footer>
+<script>
+(function(){
+"use strict";
+var color={email:"#ff7045",sms:"#5bb5fc",push:"#bd91ff",whatsapp:"#53d989"};
+var labels={email:"E-mail",sms:"SMS",push:"Push",whatsapp:"WhatsApp"};
+var channels=["email","sms","push","whatsapp"];
+var journeys={
+ welcome:{email:[1240,1480,1570,1380,1890,1720,2080],sms:[305,410,385,325,475,420,495],push:[240,270,265,320,310,370,400],whatsapp:[100,145,165,130,170,185,210]},
+ cart:{email:[920,1080,1340,1200,1590,1480,1610],sms:[140,150,185,170,210,200,230],push:[135,155,190,205,230,240,280],whatsapp:[90,120,130,145,165,180,190]},
+ after:{email:[880,930,1020,980,1120,1180,1300],sms:[180,200,235,220,270,260,295],push:[195,225,265,255,295,305,350],whatsapp:[170,190,215,245,270,295,340]}
+};
+var rates={email:{open:.36,click:.045},sms:{},push:{click:.037},whatsapp:{open:.53}};
+var periodData={
+ "7":{factor:1,labels:["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"],name:"7 dias"},
+ "30":{factor:4.2,labels:["01–05","06–10","11–15","16–20","21–25","26–30","Fim"],name:"30 dias"},
+ "90":{factor:12.3,labels:["Sem 1","Sem 3","Sem 5","Sem 7","Sem 9","Sem 11","Sem 13"],name:"90 dias"}
+};
+var $=function(id){return document.getElementById(id)};
+var fmt=function(n){return Math.round(n).toLocaleString("pt-BR")};
+var pct=function(n){return (n*100).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})+"%"};
+var selectedRows=[];
+function render(){
+ var journey=$("csJourney").value,channel=$("csChannel").value,period=$("csPeriod").value;
+ var config=periodData[period],base=journeys[journey];
+ var values={},total=0;
+ channels.forEach(function(c){
+   var series=base[c].map(function(n){return Math.round(n*config.factor)});
+   var count=series.reduce(function(a,b){return a+b},0);
+   values[c]={series:series,send:count};total+=count;
+ });
+ $("csTotal").textContent=fmt(channel==="all"?total:values[channel].send);
+ $("csEmail").textContent=channel==="all"||channel==="email"?fmt(values.email.send):"—";
+ $("csSms").textContent=channel==="all"||channel==="sms"?fmt(values.sms.send):"—";
+ $("csPush").textContent=channel==="all"||channel==="push"?fmt(values.push.send):"—";
+ $("csWhats").textContent=channel==="all"||channel==="whatsapp"?fmt(values.whatsapp.send):"—";
+ $("csChartDescription").textContent="Envios por intervalo · últimos "+config.name+" · números fictícios";
+ var visible=channel==="all"?channels:[channel];
+ var peak=Math.max.apply(null,visible.reduce(function(out,c){return out.concat(values[c].series)},[]));
+ var ceiling=Math.ceil(peak/500)*500 || 500;
+ var svg="";
+ for(var y=0;y<5;y++){
+    var yy=25+y*42;
+    svg+='<line x1="52" y1="'+yy+'" x2="733" y2="'+yy+'" stroke="#393d47" stroke-width="1"/>';
+    svg+='<text x="45" y="'+(yy+4)+'" text-anchor="end" font-size="12" fill="#aab3c1">'+fmt(ceiling*(4-y)/4)+'</text>';
+ }
+ config.labels.forEach(function(l,i){svg+='<text x="'+(52+i*113.5)+'" y="218" text-anchor="middle" font-size="12" fill="#b5bec9">'+l+'</text>'});
+ visible.forEach(function(c){
+   var points=values[c].series.map(function(val,i){return (52+i*113.5)+","+(193-(val/ceiling)*168)}).join(" ");
+   svg+='<polyline points="'+points+'" fill="none" stroke="'+color[c]+'" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>';
+   values[c].series.forEach(function(val,i){svg+='<circle cx="'+(52+i*113.5)+'" cy="'+(193-(val/ceiling)*168)+'" r="3.8" fill="'+color[c]+'" stroke="#171a20" stroke-width="1.5"/>'});
+ });
+ $("csChart").innerHTML=svg;
+ $("csChart").setAttribute("aria-label","Evolução fictícia de envios: "+visible.map(function(c){return labels[c]}).join(", "));
+ $("csLegend").innerHTML=visible.map(function(c){return '<span><i style="--c:'+color[c]+'"></i>'+labels[c]+'</span>'}).join("");
+ selectedRows=visible.map(function(c){
+   var sends=values[c].send;
+   var opens=typeof rates[c].open==="number"?Math.round(sends*rates[c].open):null;
+   var clicks=typeof rates[c].click==="number"?Math.round(sends*rates[c].click):null;
+   var delivered=Math.max(1,Math.round(sends*.98));
+   return {channel:c,send:sends,opens:opens,clicks:clicks,or:opens===null?null:opens/sends,ctr:clicks===null?null:clicks/delivered};
+ });
+ $("csStats").innerHTML=selectedRows.map(function(r){
+   return "<tr><td>"+labels[r.channel]+"</td><td>"+fmt(r.send)+"</td><td>"+(r.opens===null?"N/A":fmt(r.opens))+"</td><td>"+(r.clicks===null?"N/A":fmt(r.clicks))+"</td><td>"+(r.or===null?"N/A":pct(r.or))+"</td><td>"+(r.ctr===null?"N/A":pct(r.ctr))+"</td></tr>";
+ }).join("");
+}
+$("csFilters").addEventListener("change",render);
+$("csFilters").addEventListener("submit",function(e){e.preventDefault();render()});
+function activate(which){
+ var overview=which==="overview",b1=$("csTabOverview"),b2=$("csTabTech");
+ b1.setAttribute("aria-selected",overview?"true":"false");
+ b2.setAttribute("aria-selected",overview?"false":"true");
+ b1.tabIndex=overview?0:-1;b2.tabIndex=overview?-1:0;
+ $("csPanelOverview").hidden=!overview;$("csPanelTech").hidden=overview;
+}
+$("csTabOverview").addEventListener("click",function(){activate("overview")});
+$("csTabTech").addEventListener("click",function(){activate("tech")});
+document.querySelectorAll(".cs-tab").forEach(function(button){
+ button.addEventListener("keydown",function(e){
+   if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();var target=button.id==="csTabOverview"?$("csTabTech"):$("csTabOverview");target.click();target.focus()}
+ });
+});
+$("csExploreTech").addEventListener("click",function(e){e.preventDefault();activate("tech");$("csTabTech").focus();window.scrollTo({top:document.querySelector(".cs-tabs-wrap").offsetTop-60,behavior:"smooth"})});
+$("csBackDemo").addEventListener("click",function(e){e.preventDefault();activate("overview");$("csTabOverview").focus();window.scrollTo({top:document.querySelector(".cs-tabs-wrap").offsetTop-60,behavior:"smooth"})});
+$("csExport").addEventListener("click",function(){
+ var lines=["Canal;Envios;Aberturas;Cliques;OR;CTR"].concat(selectedRows.map(function(r){
+   return [labels[r.channel],r.send,r.opens===null?"N/A":r.opens,r.clicks===null?"N/A":r.clicks,r.or===null?"N/A":pct(r.or),r.ctr===null?"N/A":pct(r.ctr)].join(";");
+ }));
+ var file=new Blob(["\ufeff"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
+ var url=URL.createObjectURL(file),a=document.createElement("a");a.href=url;a.download="dashboard-jornadas-dados-ficticios.csv";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},1000);
+});
+render();
+})();
+</script>
+<script src="/assets/site.js"></script>
+</body></html>
