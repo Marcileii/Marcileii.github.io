@@ -270,17 +270,21 @@ function render(){
  var visible=channel==="all"?channels:[channel];
  var peak=Math.max.apply(null,visible.reduce(function(out,c){return out.concat(values[c].series)},[]));
  var ceiling=Math.ceil(peak/500)*500 || 500;
+ var narrow=window.matchMedia("(max-width:720px)").matches;
+ var chartLeft=narrow?46:52, chartRight=narrow?342:733;
+ var chartStep=(chartRight-chartLeft)/6, chartFont=narrow?11:12;
+ $("csChart").setAttribute("viewBox",narrow?"0 0 360 232":"0 0 760 232");
  var svg="";
  for(var y=0;y<5;y++){
     var yy=25+y*42;
-    svg+='<line x1="52" y1="'+yy+'" x2="733" y2="'+yy+'" stroke="#393d47" stroke-width="1"/>';
-    svg+='<text x="45" y="'+(yy+4)+'" text-anchor="end" font-size="12" fill="#aab3c1">'+fmt(ceiling*(4-y)/4)+'</text>';
+    svg+='<line x1="'+chartLeft+'" y1="'+yy+'" x2="'+chartRight+'" y2="'+yy+'" stroke="#393d47" stroke-width="1"/>';
+    svg+='<text x="'+(chartLeft-7)+'" y="'+(yy+4)+'" text-anchor="end" font-size="'+chartFont+'" fill="#aab3c1">'+fmt(ceiling*(4-y)/4)+'</text>';
  }
- config.labels.forEach(function(l,i){svg+='<text x="'+(52+i*113.5)+'" y="218" text-anchor="middle" font-size="12" fill="#b5bec9">'+l+'</text>'});
+ config.labels.forEach(function(l,i){svg+='<text x="'+(chartLeft+i*chartStep)+'" y="218" text-anchor="middle" font-size="'+chartFont+'" fill="#b5bec9">'+l+'</text>'});
  visible.forEach(function(c){
-   var points=values[c].series.map(function(val,i){return (52+i*113.5)+","+(193-(val/ceiling)*168)}).join(" ");
+   var points=values[c].series.map(function(val,i){return (chartLeft+i*chartStep)+","+(193-(val/ceiling)*168)}).join(" ");
    svg+='<polyline points="'+points+'" fill="none" stroke="'+color[c]+'" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>';
-   values[c].series.forEach(function(val,i){svg+='<circle cx="'+(52+i*113.5)+'" cy="'+(193-(val/ceiling)*168)+'" r="3.8" fill="'+color[c]+'" stroke="#171a20" stroke-width="1.5"/>'});
+   values[c].series.forEach(function(val,i){svg+='<circle cx="'+(chartLeft+i*chartStep)+'" cy="'+(193-(val/ceiling)*168)+'" r="3.8" fill="'+color[c]+'" stroke="#171a20" stroke-width="1.5"/>'});
  });
  $("csChart").innerHTML=svg;
  $("csChart").setAttribute("aria-label","Evolução fictícia de envios: "+visible.map(function(c){return labels[c]}).join(", "));
@@ -321,6 +325,7 @@ $("csExport").addEventListener("click",function(){
  var file=new Blob(["\ufeff"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
  var url=URL.createObjectURL(file),a=document.createElement("a");a.href=url;a.download="dashboard-jornadas-dados-ficticios.csv";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},1000);
 });
+window.matchMedia("(max-width:720px)").addEventListener("change",render);
 render();
 })();
 </script>
