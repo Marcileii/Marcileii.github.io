@@ -69,6 +69,7 @@
 - Testes usam viewports de **360, 390 e 430 px** e tablet; incluem navegação, menus, overflow, tamanhos de toque e screenshots.
 - Previews/iframes de projetos são carregados sob demanda (`loading="lazy"`): screenshots full-page feitos antes de rolar podem capturá-los vazios; conferir após scroll real.
 - `qa/mobile-scroll-audit.spec.mjs` exercita rolagem, previews e o caminho home → case → aba técnica.
+- Na página inicial em até 720px, a foto usa um retrato quadrado compacto à direita do título, sem sobrepor as letras; o texto de apresentação e CTAs ocupam a largura completa abaixo. A regra fica em `assets/mobile.css` (PR #38). Em desktop, o retrato grande permanece na lateral.
 - Manter CTAs claros, legibilidade do gráfico, enquadramento da foto e velocidade de carregamento.
 - Próximas melhorias de UI devem ser revisadas visualmente antes de publicar, sobretudo em celular.
 
