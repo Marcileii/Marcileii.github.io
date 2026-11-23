@@ -15,6 +15,7 @@ for (const width of [360,390,430,720]) {
   expect(layout.portrait.x).toBeGreaterThanOrEqual(layout.title.right-2);
   expect(Math.abs(layout.portrait.y-layout.title.y)).toBeLessThanOrEqual(12);
   expect(layout.portrait.width).toBeLessThanOrEqual(142);
+  expect(Math.abs(layout.portrait.height-layout.portrait.width)).toBeLessThanOrEqual(2);
   expect(layout.portrait.width).toBeGreaterThanOrEqual(95);
   expect(layout.intro.y).toBeGreaterThanOrEqual(Math.max(layout.title.bottom,layout.portrait.bottom)-1);
   expect(layout.portrait.right).toBeLessThanOrEqual(width+1);
